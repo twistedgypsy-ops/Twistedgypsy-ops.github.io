@@ -1,52 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Twisted Gypsy</title>
-  <link rel="icon" href="favicon.png" />
-  <link rel="stylesheet" href="styles.css?v=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twisted Gypsy</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <h1>🌙 Twisted Gypsy 🌙</h1>
-    <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="shop.html">Shop</a>
-      <a href="blog.html">Blog</a>
-      <a href="events.html">Events</a>
-      <a href="contact.html">Contact</a>
+
+    <!-- Stars Background -->
+    <div class="tg-stars"></div>
+
+    <!-- Header -->
+    <header>
+        <h1>🌙 Twisted Gypsy 🌙</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Shop</a>
+        <a href="#">Blog</a>
+        <a href="#">Events</a>
+        <a href="#">Contact</a>
     </nav>
-  </header>
 
-  <main>
+    <!-- Hero Section -->
     <section class="hero">
-      <h2>Your Celestial Hub for Soulful Living</h2>
-      <p>Explore our mystical world of merch, e-books, and cosmic adventures.</p>
+        <h2>Your Celestial Hub for Soulful Living</h2>
+        <p>Explore our mystical world of merch, e-books, and cosmic adventures.</p>
     </section>
 
-    <section class="features">
-      <article class="feature">
-        <h3>✨ Mystical Merch</h3>
-        <p>Boho-inspired apparel, jewelry, and home decor to elevate your vibe.</p>
-      </article>
-      <article class="feature">
-        <h3>📚 Soulful E-Books</h3>
-        <p>Guides on manifestation, spiritual growth, and abundant living.</p>
-      </article>
-      <article class="feature">
-        <h3>🌌 Cosmic Events</h3>
-        <p>Workshops, retreats, and celestial celebrations to expand your spirit.</p>
-      </article>
+    <!-- Cards Section -->
+    <section>
+        <div class="card">
+            <h3>✨ Mystical Merch</h3>
+            <p>Boho-inspired apparel, jewelry, and home decor to elevate your vibe.</p>
+        </div>
+        <div class="card">
+            <h3>📚 Soulful E-Books</h3>
+            <p>Guides on manifestation, spiritual growth, and abundant living.</p>
+        </div>
+        <div class="card">
+            <h3>🌌 Cosmic Events</h3>
+            <p>Workshops, retreats, and celestial celebrations to expand your spirit.</p>
+        </div>
     </section>
-  </main>
 
-  <footer class="site-footer">
-    © <script>document.write(new Date().getFullYear())</script> Twisted Gypsy
-  </footer>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Twisted Gypsy | All Rights Reserved</p>
+    </footer>
 
-  <canvas class="tg-stars" aria-hidden="true"></canvas>
-  <script defer src="main.js?v=1"></script>
+    <!-- JavaScript for Stars -->
+    <script>
+        const starContainer = document.querySelector('.tg-stars');
+
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            const size = Math.random() * 3 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+
+            star.style.top = Math.random() * window.innerHeight + 'px';
+            star.style.left = Math.random() * window.innerWidth + 'px';
+
+            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+
+            starContainer.appendChild(star);
+
+            setTimeout(() => {
+                star.remove();
+            }, 5000);
+        }
+
+        setInterval(createStar, 100);
+    </script>
+
 </body>
 </html>
