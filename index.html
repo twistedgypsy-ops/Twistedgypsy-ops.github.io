@@ -1,34 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Twisted Gypsy</title>
-  <link rel="icon" href="favicon.png" />
-
-  <!-- All styling is inside this single style tag -->
+  <link rel="stylesheet" href="styles.css">
   <style>
-    /* Base */
-    body{margin:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#000;color:gold;text-align:center}
-    header{background:rgba(0,0,0,.75);color:gold;padding:1rem 0;border-bottom:2px solid gold}
-    header h1{margin:0;font-size:2.5rem;animation:tg-title-pulse 6s ease-in-out infinite}
-    nav{margin-top:10px}
-    nav a{color:gold;text-decoration:none;margin:0 15px;font-weight:bold;transition:text-shadow .25s ease,transform .2s ease}
-    nav a:hover{color:#fff;text-shadow:0 0 6px rgba(212,175,55,.8),0 0 18px rgba(212,175,55,.4);transform:translateY(-1px)}
-    .hero{padding:50px 20px;background:rgba(0,0,0,.65)}
-    .hero h2{font-size:2.5rem;animation:tg-shimmer 5s ease-in-out infinite}
-    .hero p{max-width:600px;margin:0 auto}
-    .features{display:flex;flex-wrap:wrap;justify-content:center;padding:20px}
-    .feature{background:rgba(0,0,0,.7);border:1px solid gold;margin:10px;padding:20px;border-radius:10px;width:250px}
-    footer{background:rgba(0,0,0,.75);border-top:2px solid gold;padding:10px;font-size:.9rem}
-
-    /* Stars canvas and stacking */
-    .tg-stars{position:fixed;inset:0;z-index:0;pointer-events:none}
-    header,nav,main,section,footer{position:relative;z-index:1}
-
-    /* Animations */
-    @keyframes tg-shimmer{0%{text-shadow:0 0 0 rgba(212,175,55,0)}50%{text-shadow:0 0 12px rgba(212,175,55,.65)}100%{text-shadow:0 0 0 rgba(212,175,55,0)}}
-    @keyframes tg-title-pulse{0%,100%{text-shadow:0 0 8px rgba(212,175,55,.35)}50%{text-shadow:0 0 18px rgba(212,175,55,.65)}}
+    /* Make stars visible behind content */
+    .tg-stars { 
+      position: fixed; 
+      inset: 0; 
+      z-index: 0; 
+      pointer-events: none; 
+      opacity: 0.95;
+    }
+    header, nav, main, section, footer { 
+      position: relative; 
+      z-index: 1; 
+    }
   </style>
 </head>
 <body>
@@ -39,11 +28,4 @@
       <a href="about.html">About</a>
       <a href="shop.html">Shop</a>
       <a href="blog.html">Blog</a>
-      <a href="events.html">Events</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h2>Your Celestial Hub for Soulful Living</h2>
-    <p>Explore our mystical world of merch, e-books, and cosmic adventures.</p
+      <a
