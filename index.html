@@ -1,31 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Twisted Gypsy</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    /* Make stars visible behind content */
-    .tg-stars { 
-      position: fixed; 
-      inset: 0; 
-      z-index: 0; 
-      pointer-events: none; 
-      opacity: 0.95;
-    }
-    header, nav, main, section, footer { 
-      position: relative; 
-      z-index: 1; 
-    }
-  </style>
+  <link rel="icon" href="favicon.png" />
+  <link rel="stylesheet" href="styles.css?v=1" />
 </head>
 <body>
-  <header>
+  <header class="site-header">
     <h1>🌙 Twisted Gypsy 🌙</h1>
-    <nav>
+    <nav class="nav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="shop.html">Shop</a>
       <a href="blog.html">Blog</a>
-      <a
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Your Celestial Hub for Soulful Living</h2>
+      <p>Explore our mystical world of merch, e-books, and cosmic adventures.</p>
+    </section>
+
+    <section class="features">
+      <article class="feature">
+        <h3>✨ Mystical Merch</h3>
+        <p>Boho-inspired apparel, jewelry, and home decor to elevate your vibe.</p>
+      </article>
+      <article class="feature">
+        <h3>📚 Soulful E-Books</h3>
+        <p>Guides on manifestation, spiritual growth, and abundant living.</p>
+      </article>
+      <article class="feature">
+        <h3>🌌 Cosmic Events</h3>
+        <p>Workshops, retreats, and celestial celebrations to expand your spirit.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    © <script>document.write(new Date().getFullYear())</script> Twisted Gypsy
+  </footer>
+
+  <canvas class="tg-stars" aria-hidden="true"></canvas>
+  <script defer src="main.js?v=1"></script>
+</body>
+</html>
