@@ -7,6 +7,23 @@
   <link rel="icon" href="favicon.png" />
   <link rel="stylesheet" href="styles.css?v=11" />
   <style>
+    <style>
+/* --- inline emergency CSS so the page is styled --- */
+body{margin:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#000;color:gold;text-align:center}
+header{background:rgba(0,0,0,.75);color:gold;padding:1rem 0;border-bottom:2px solid gold}
+header h1{margin:0;font-size:2.5rem}
+nav{margin-top:10px}
+nav a{color:gold;text-decoration:none;margin:0 15px;font-weight:bold}
+nav a:hover{color:#fff;text-shadow:0 0 6px rgba(212,175,55,.8),0 0 18px rgba(212,175,55,.4)}
+.hero{padding:50px 20px;background:rgba(0,0,0,.65)}
+.hero h2{font-size:2.2rem}
+.hero p{max-width:600px;margin:0 auto}
+.features{display:flex;flex-wrap:wrap;justify-content:center;padding:20px}
+.feature{background:rgba(0,0,0,.7);border:1px solid gold;margin:10px;padding:20px;border-radius:10px;width:250px}
+footer{background:rgba(0,0,0,.75);border-top:2px solid gold;padding:10px;font-size:.9rem}
+.tg-stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+header,nav,main,section,footer{position:relative;z-index:1}
+</style>
     /* Make stars visible behind content */
     .tg-stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
     header, nav, main, section, footer { position: relative; z-index: 1; }
