@@ -81,3 +81,38 @@ body::before {
   opacity: 0.2;
   z-index: -1;
 }
+/* --- Twisted Gypsy glow & motion --- */
+.tg-stars {
+  position: fixed;
+  inset: 0;
+  z-index: -1;           /* behind everything */
+  pointer-events: none;
+}
+
+/* Soft golden glow on nav links */
+nav a {
+  transition: text-shadow .25s ease, transform .2s ease;
+}
+nav a:hover {
+  text-shadow: 0 0 6px rgba(212,175,55,0.8), 0 0 18px rgba(212,175,55,0.4);
+  transform: translateY(-1px);
+}
+
+/* Shimmer sweep for section headings */
+@keyframes tg-shimmer {
+  0% { text-shadow: 0 0 0 rgba(212,175,55,0); }
+  50% { text-shadow: 0 0 12px rgba(212,175,55,0.65); }
+  100% { text-shadow: 0 0 0 rgba(212,175,55,0); }
+}
+h2 { animation: tg-shimmer 5s ease-in-out infinite; }
+
+/* Optional moon pulse (if you keep moon emojis in header) */
+header h1 {
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(212,175,55,0.35);
+  animation: tg-title-pulse 6s ease-in-out infinite;
+}
+@keyframes tg-title-pulse {
+  0%,100% { text-shadow: 0 0 8px rgba(212,175,55,0.35); }
+  50% { text-shadow: 0 0 18px rgba(212,175,55,0.65); }
+}
