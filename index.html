@@ -1,85 +1,135 @@
-<!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twisted Gypsy</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Twisted Gypsy</title>
+  <link rel="icon" href="favicon.png" />
+  <!-- use your existing stylesheet; the stars are independent -->
+  <link rel="stylesheet" href="styles.css?v=25" />
+
+  <!-- Make sure content sits above the star canvas -->
+  <style>
+    #tg-stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;          /* behind everything */
+      pointer-events: none;
+    }
+    header, nav, main, section, footer {
+      position: relative;
+      z-index: 1;          /* above the canvas */
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Stars Background -->
-    <div class="tg-stars"></div>
+  <!-- BRIGHT, ANIMATED STARFIELD -->
+  <canvas id="tg-stars" aria-hidden="true"></canvas>
 
-    <!-- Header -->
-    <header>
-        <h1>🌙 Twisted Gypsy 🌙</h1>
-    </header>
-
-    <!-- Navigation -->
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Shop</a>
-        <a href="#">Blog</a>
-        <a href="#">Events</a>
-        <a href="#">Contact</a>
+  <header class="site-header">
+    <h1>🌙 Twisted Gypsy 🌙</h1>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="shop.html">Shop</a>
+      <a href="blog.html">Blog</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact</a>
     </nav>
+  </header>
 
-    <!-- Hero Section -->
+  <main>
     <section class="hero">
-        <h2>Your Celestial Hub for Soulful Living</h2>
-        <p>Explore our mystical world of merch, e-books, and cosmic adventures.</p>
+      <h2>Your Celestial Hub for Soulful Living</h2>
+      <p>Explore our mystical world of merch, e-books, and cosmic adventures.</p>
     </section>
 
-    <!-- Cards Section -->
-    <section>
-        <div class="card">
-            <h3>✨ Mystical Merch</h3>
-            <p>Boho-inspired apparel, jewelry, and home decor to elevate your vibe.</p>
-        </div>
-        <div class="card">
-            <h3>📚 Soulful E-Books</h3>
-            <p>Guides on manifestation, spiritual growth, and abundant living.</p>
-        </div>
-        <div class="card">
-            <h3>🌌 Cosmic Events</h3>
-            <p>Workshops, retreats, and celestial celebrations to expand your spirit.</p>
-        </div>
+    <section class="features">
+      <article class="feature">
+        <h3>✨ Mystical Merch</h3>
+        <p>Boho-inspired apparel, jewelry, and home decor to elevate your vibe.</p>
+      </article>
+      <article class="feature">
+        <h3>📚 Soulful E-Books</h3>
+        <p>Guides on manifestation, spiritual growth, and abundant living.</p>
+      </article>
+      <article class="feature">
+        <h3>🌌 Cosmic Events</h3>
+        <p>Workshops, retreats, and celestial celebrations to expand your spirit.</p>
+      </article>
     </section>
+  </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Twisted Gypsy | All Rights Reserved</p>
-    </footer>
+  <footer class="site-footer">
+    © <script>document.write(new Date().getFullYear())</script> Twisted Gypsy
+  </footer>
 
-    <!-- JavaScript for Stars -->
-    <script>
-        const starContainer = document.querySelector('.tg-stars');
+  <!-- Starfield script (gold + white, obvious twinkle + drift) -->
+  <script>
+  (function () {
+    const c = document.getElementById('tg-stars');
+    const ctx = c.getContext('2d');
 
-        function createStar() {
-            const star = document.createElement('div');
-            star.classList.add('star');
+    let w, h, dpr, stars = [];
+    const GOLD_N = 140, WHITE_N = 100;
 
-            const size = Math.random() * 3 + 'px';
-            star.style.width = size;
-            star.style.height = size;
+    function resize() {
+      dpr = window.devicePixelRatio || 1;
+      w = c.width  = innerWidth  * dpr;
+      h = c.height = innerHeight * dpr;
+      c.style.width  = innerWidth  + 'px';
+      c.style.height = innerHeight + 'px';
+    }
 
-            star.style.top = Math.random() * window.innerHeight + 'px';
-            star.style.left = Math.random() * window.innerWidth + 'px';
+    function mk(color) {
+      const base = color === 'gold';
+      const r = (Math.random() * (base ? 2.6 : 1.9) + (base ? 1.0 : 0.7)) * dpr;
+      return {
+        x: Math.random()*w, y: Math.random()*h, r,
+        a: Math.random()*(base?0.7:0.6) + (base?0.6:0.5),
+        t: Math.random()*Math.PI*2,
+        v: Math.random()*0.003  + (base?0.0015:0.001),  // faster pulse
+        dx:(Math.random()-0.5)*(base?0.22:0.18),
+        dy:(Math.random()-0.5)*(base?0.16:0.12),
+        flick: Math.random()*0.35 + 0.65,
+        color
+      };
+    }
 
-            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    function init() {
+      stars = [];
+      for (let i=0;i<GOLD_N;i++) stars.push(mk('gold'));
+      for (let i=0;i<WHITE_N;i++) stars.push(mk('white'));
+    }
 
-            starContainer.appendChild(star);
+    function draw(s, pulse) {
+      const radius = s.r * (0.55 + 0.45*pulse * s.flick);
+      const alpha  = s.a * (0.45 + 0.55*pulse);
+      const col = s.color==='gold' ? '212,175,55' : '255,255,255';
+      const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, radius);
+      g.addColorStop(0, `rgba(${col},${alpha})`);
+      g.addColorStop(1, `rgba(${col},0)`);
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(s.x, s.y, radius, 0, Math.PI*2); ctx.fill();
+    }
 
-            setTimeout(() => {
-                star.remove();
-            }, 5000);
-        }
+    function tick() {
+      ctx.clearRect(0,0,w,h);
+      for (const s of stars) {
+        s.t += s.v;
+        const pulse = (Math.sin(s.t)+1)/2;
+        draw(s, pulse);
+        s.x += s.dx; s.y += s.dy;
+        if (s.x < -12) s.x = w+12; if (s.x > w+12) s.x = -12;
+        if (s.y < -12) s.y = h+12; if (s.y > h+12) s.y = -12;
+      }
+      requestAnimationFrame(tick);
+    }
 
-        setInterval(createStar, 100);
-    </script>
-<div class="star-overlay" aria-hidden="true"></div>
+    addEventListener('resize', ()=>{resize();init();});
+    resize(); init(); tick();
+  })();
+  </script>
 </body>
-</html>
-            
+</html>      
