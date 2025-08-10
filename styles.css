@@ -96,3 +96,24 @@ section {
     max-width: 500px;
     background: rgba(0, 0, 0, 0.6);
     box-shadow:
+/* --- Minimal, CSS-only star field --- */
+.star-overlay{
+  position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.55;
+  background:
+    radial-gradient(1.8px 1.8px at 12% 18%, rgba(212,175,55,.95) 40%, transparent 41%),
+    radial-gradient(1.4px 1.4px at 42% 72%, rgba(255,255,255,.9) 40%, transparent 41%),
+    radial-gradient(1.6px 1.6px at 78% 28%, rgba(212,175,55,.9) 40%, transparent 41%),
+    radial-gradient(1.3px 1.3px at 65% 55%, rgba(255,255,255,.85) 40%, transparent 41%),
+    radial-gradient(1.7px 1.7px at 25% 60%, rgba(212,175,55,.9) 40%, transparent 41%),
+    radial-gradient(1.2px 1.2px at 88% 70%, rgba(255,255,255,.85) 40%, transparent 41%);
+  background-repeat: repeat;
+  background-size: 300px 300px, 260px 260px, 340px 340px, 280px 280px, 360px 360px, 320px 320px;
+  animation: tg-twinkle 3.6s ease-in-out infinite alternate;
+}
+@keyframes tg-twinkle {
+  0%   { opacity:.35; filter:brightness(.9); }
+  50%  { opacity:.75; filter:brightness(1.15); }
+  100% { opacity:.5;  filter:brightness(1.0); }
+}
+/* ensure content stays above stars (you likely already have this) */
+header, nav, main, section, footer { position:relative; z-index:1; }
