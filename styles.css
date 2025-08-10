@@ -1,15 +1,15 @@
-/* General Styles */
+/* Body */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: transparent; /* Let stars show through */
+  background: #000; /* Solid black base */
   color: gold;
   text-align: center;
 }
 
 /* Header */
 header {
-  background-color: rgba(0, 0, 0, 0.75); /* Semi-transparent black */
+  background-color: rgba(0, 0, 0, 0.75);
   color: gold;
   padding: 1rem 0;
   border-bottom: 2px solid gold;
@@ -43,30 +43,4 @@ nav a:hover {
 /* Hero Section */
 .hero {
   padding: 50px 20px;
-  background-color: rgba(0, 0, 0, 0.65);
-}
-
-.hero h2 {
-  font-size: 2.5em;
-  animation: tg-shimmer 5s ease-in-out infinite;
-}
-
-.hero p {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* Features Section */
-.features {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 20px;
-}
-
-.feature {
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid gold;
-  margin: 10px;
-  padding: 20px;
-  border-radius
+  background-color: rgba(0,
