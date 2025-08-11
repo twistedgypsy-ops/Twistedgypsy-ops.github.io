@@ -4,25 +4,41 @@
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact • Twisted Gypsy</title>
   <style>
-    :root{--gold:#d4af37;--fg:#f5f5f5;--bg:#000}
-    html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    #tg-stars{position:fixed;inset:0;z-index:-1;pointer-events:none}
-    .content{position:relative;z-index:10}
+    :root{--gold:#d4af37;--fg:#f5f5f5}
+    /* transparent page so stars show everywhere */
+    html,body{margin:0;height:100%;background:transparent;color:var(--fg);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+
+    /* stars behind content */
+    #tg-stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+    /* content above stars */
+    .content, header, nav, main, section, footer { position:relative; z-index:1; }
+
+    /* header + nav */
     header h1{margin:18px 0;text-align:center;color:var(--gold);text-shadow:0 0 10px rgba(212,175,55,.6)}
-    nav{display:flex;justify-content:center;flex-wrap:wrap;gap:18px;padding:10px 0;border-block:1px solid rgba(212,175,55,.4);box-shadow:0 0 12px rgba(212,175,55,.35)}
+    nav{display:flex;justify-content:center;flex-wrap:wrap;gap:18px;padding:10px 0;
+        border-block:1px solid rgba(212,175,55,.4);box-shadow:0 0 12px rgba(212,175,55,.35)}
     nav a{color:var(--gold);text-decoration:none;font-weight:700}
     nav a:hover{color:#fff176;text-shadow:0 0 8px rgba(212,175,55,.8)}
+
+    /* panel */
     main{max-width:900px;margin:20px auto;padding:16px}
-    .panel{background:rgba(0,0,0,.45);border:1px solid rgba(212,175,55,.35);border-radius:14px;padding:20px}
+    .panel{background:rgba(0,0,0,.25);border:1px solid rgba(212,175,55,.35);
+           border-radius:14px;padding:20px}
     h2{color:var(--gold);margin-top:0}
-    .contact-item{margin-bottom:15px}
-    .contact-item a{color:var(--gold);text-decoration:none;font-weight:700}
-    .contact-item a:hover{text-shadow:0 0 8px rgba(212,175,55,.8)}
+    .row{display:grid;gap:14px}
+    .item{background:rgba(0,0,0,.45);border:1px solid rgba(212,175,55,.35);border-radius:12px;padding:14px}
+    .item a{color:var(--gold);text-decoration:none;font-weight:700}
+    .item a:hover{text-shadow:0 0 8px rgba(212,175,55,.8)}
+
     footer{padding:20px 0;text-align:center;color:var(--gold)}
   </style>
 </head>
 <body>
+  <!-- stars -->
   <canvas id="tg-stars" aria-hidden="true"></canvas>
+
   <div class="content">
     <header>
       <h1>🌙 Twisted Gypsy 🌙</h1>
@@ -40,20 +56,23 @@
     <main>
       <section class="panel">
         <h2>Contact</h2>
-        <div class="contact-item">
-          📧 Email: <a href="mailto:sherrijm01@gmail.com">sherrijm01@gmail.com</a>
-        </div>
-        <div class="contact-item">
-          📷 Instagram: <a href="https://www.instagram.com/twistedgypsy32?igsh=cDJqbTRuYThtNXJu" target="_blank">@twistedgypsy32</a>
-        </div>
-        <div class="contact-item">
-          ▶️ YouTube: <a href="https://youtube.com/@twistedgypsy32?si=uu_5r1LF5DWkOLun" target="_blank">Twisted Gypsy</a>
-        </div>
-        <div class="contact-item">
-          👍 Facebook: <a href="https://www.facebook.com/share/1CEaSqmbTG/" target="_blank">Facebook Page</a>
-        </div>
-        <div class="contact-item">
-          🛍 Shop: <a href="https://twistedgypsy.dashery.com/" target="_blank">Twisted Gypsy Store</a>
+        <div class="row">
+          <div class="item">
+            <strong>📧 Email</strong><br>
+            <a href="mailto:sherrijm01@gmail.com">sherrijm01@gmail.com</a>
+          </div>
+          <div class="item">
+            <strong>📷 Instagram</strong><br>
+            <a href="https://www.instagram.com/twistedgypsy32?igsh=cDJqbTRuYThtNXJu" target="_blank" rel="noopener">@twistedgypsy32</a>
+          </div>
+          <div class="item">
+            <strong>▶️ YouTube</strong><br>
+            <a href="https://youtube.com/@twistedgypsy32?si=uu_5r1LF5DWkOLun" target="_blank" rel="noopener">Twisted Gypsy</a>
+          </div>
+          <div class="item">
+            <strong>🛍 Shop</strong><br>
+            <a href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">twistedgypsy.dashery.com</a>
+          </div>
         </div>
       </section>
     </main>
@@ -61,15 +80,76 @@
     <footer>&copy; <script>document.write(new Date().getFullYear())</script> Twisted Gypsy</footer>
   </div>
 
+  <!-- starfield that paints a full night sky so stars show behind everything -->
   <script>
-  (function(){const c=document.getElementById('tg-stars');if(!c)return;const x=c.getContext('2d');let w,h,d,S=[];
-    const G=140,W=100;
-    function R(){d=window.devicePixelRatio||1;w=c.width=innerWidth*d;h=c.height=innerHeight*d;c.style.width=innerWidth+'px';c.style.height=innerHeight+'px'}
-    function mk(col){const g=col==='gold',r=(Math.random()*(g?2.6:1.9)+(g?1:0.7))*d;return{x:Math.random()*w,y:Math.random()*h,r,a:Math.random()*(g?.7:.6)+(g?.6:.5),t:Math.random()*6.283,v:Math.random()*(g?.003:.0012)+(g?.0015:.001),dx:(Math.random()-.5)*(g?.22:.18),dy:(Math.random()-.5)*(g?.16:.12),f:Math.random()*.35+.65,col}}
-    function init(){S=[];for(let i=0;i<G;i++)S.push(mk('gold'));for(let i=0;i<W;i++)S.push(mk('white'))}
-    function draw(s,p){const r=s.r*(.55+.45*p*s.f),a=s.a*(.45+.55*p),col=s.col==='gold'?'212,175,55':'255,255,255',g=x.createRadialGradient(s.x,s.y,0,s.x,s.y,r);g.addColorStop(0,`rgba(${col},${a})`);g.addColorStop(1,`rgba(${col},0)`);x.fillStyle=g;x.beginPath();x.arc(s.x,s.y,r,0,6.283);x.fill()}
-    function tick(){x.clearRect(0,0,w,h);for(const s of S){s.t+=s.v;const p=(Math.sin(s.t)+1)/2;draw(s,p);s.x+=s.dx;s.y+=s.dy;if(s.x<-12)s.x=w+12;if(s.x>w+12)s.x=-12;if(s.y<-12)s.y=h+12;if(s.y>h+12)s.y=-12}requestAnimationFrame(tick)}
-    addEventListener('resize',()=>{R();init()});R();init();tick()})();
+  (function () {
+    const c = document.getElementById('tg-stars');
+    if (!c) return;
+    const ctx = c.getContext('2d');
+    let w, h, dpr, stars = [];
+    const GOLD_N = 140, WHITE_N = 100;
+
+    function resize() {
+      dpr = window.devicePixelRatio || 1;
+      w = c.width = innerWidth * dpr;
+      h = c.height = innerHeight * dpr;
+      c.style.width = innerWidth + 'px';
+      c.style.height = innerHeight + 'px';
+    }
+
+    function make(color) {
+      const isGold = color === 'gold';
+      const r = (Math.random() * (isGold ? 2.6 : 1.9) + (isGold ? 1.0 : 0.7)) * dpr;
+      return {
+        x: Math.random() * w, y: Math.random() * h, r,
+        a: Math.random() * (isGold ? 0.7 : 0.6) + (isGold ? 0.6 : 0.5),
+        t: Math.random() * Math.PI * 2,
+        v: Math.random() * (isGold ? 0.003 : 0.0012) + (isGold ? 0.0015 : 0.001),
+        dx: (Math.random() - 0.5) * (isGold ? 0.22 : 0.18),
+        dy: (Math.random() - 0.5) * (isGold ? 0.16 : 0.12),
+        flick: Math.random() * 0.35 + 0.65,
+        color
+      };
+    }
+
+    function init() {
+      stars = [];
+      for (let i = 0; i < GOLD_N; i++) stars.push(make('gold'));
+      for (let i = 0; i < WHITE_N; i++) stars.push(make('white'));
+    }
+
+    function drawStar(s, p) {
+      const r = s.r * (0.55 + 0.45 * p * s.flick);
+      const a = s.a * (0.45 + 0.55 * p);
+      const col = s.color === 'gold' ? '212,175,55' : '255,255,255';
+      const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, r);
+      g.addColorStop(0, `rgba(${col},${a})`);
+      g.addColorStop(1, `rgba(${col},0)`);
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(s.x, s.y, r, 0, Math.PI * 2); ctx.fill();
+    }
+
+    function tick() {
+      // paint full black sky so stars show behind page content end-to-end
+      ctx.fillStyle = 'rgba(0,0,0,1)';
+      ctx.fillRect(0, 0, w, h);
+
+      for (const s of stars) {
+        s.t += s.v;
+        const p = (Math.sin(s.t) + 1) / 2;
+        drawStar(s, p);
+        s.x += s.dx; s.y += s.dy;
+        if (s.x < -12) s.x = w + 12;
+        if (s.x > w + 12) s.x = -12;
+        if (s.y < -12) s.y = h + 12;
+        if (s.y > h + 12) s.y = -12;
+      }
+      requestAnimationFrame(tick);
+    }
+
+    addEventListener('resize', () => { resize(); init(); });
+    resize(); init(); tick();
+  })();
   </script>
 </body>
-</html>      
+</html>    
