@@ -2,55 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PAGE TITLE • Twisted Gypsy</title>
+  <title>Contact • Twisted Gypsy</title>
   <style>
     :root{--gold:#d4af37;--fg:#f5f5f5;--bg:#000}
     html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+
+    /* stars behind everything */
     #tg-stars{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+    /* content above stars */
     .content{position:relative;z-index:10}
+
     header h1{margin:18px 0;text-align:center;color:var(--gold);text-shadow:0 0 10px rgba(212,175,55,.6)}
     nav{display:flex;justify-content:center;flex-wrap:wrap;gap:18px;padding:10px 0;border-block:1px solid rgba(212,175,55,.4);box-shadow:0 0 12px rgba(212,175,55,.35)}
     nav a{color:var(--gold);text-decoration:none;font-weight:700}
     nav a:hover{color:#fff176;text-shadow:0 0 8px rgba(212,175,55,.8)}
-    .panel{padding:24px 16px;text-align:center;max-width:900px;margin:16px auto;background:rgba(0,0,0,.45);border:1px solid rgba(212,175,55,.35);border-radius:14px}
-    .panel h2{color:var(--gold);margin:0 0 8px}
+
+    main{max-width:900px;margin:20px auto;padding:16px}
+    .panel{background:rgba(0,0,0,.45);border:1px solid rgba(212,175,55,.35);border-radius:14px;padding:20px}
+    h2{color:var(--gold);margin-top:0}
+
+    .contact-row{display:grid;gap:14px}
+    .contact-item{background:rgba(0,0,0,.55);border:1px solid rgba(212,175,55,.4);border-radius:12px;padding:14px}
+    .contact-item a{color:var(--gold);text-decoration:none;font-weight:700}
+    .contact-item a:hover{text-shadow:0 0 8px rgba(212,175,55,.8)}
+
     footer{padding:20px 0;text-align:center;color:var(--gold)}
   </style>
 </head>
 <body>
+  <!-- stars canvas -->
   <canvas id="tg-stars" aria-hidden="true"></canvas>
+
+  <!-- everything visible goes inside .content so it's above stars -->
   <div class="content">
     <header>
       <h1>🌙 Twisted Gypsy 🌙</h1>
       <nav>
-        <a href="index.html?v=starfix2">Home</a>
-        <a href="about.html?v=starfix2">About</a>
-        <a href="ebooks.html?v=starfix2">E-Books</a>
+        <a href="index.html?v=starfix3">Home</a>
+        <a href="about.html?v=starfix3">About</a>
+        <a href="ebooks.html?v=starfix3">E-Books</a>
         <a href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">Shop</a>
-        <a href="blog.html?v=starfix2">Blog</a>
-        <a href="events.html?v=starfix2">Events</a>
-        <a href="contact.html?v=starfix2">Contact</a>
+        <a href="blog.html?v=starfix3">Blog</a>
+        <a href="events.html?v=starfix3">Events</a>
+        <a href="contact.html?v=starfix3">Contact</a>
       </nav>
     </header>
 
     <main>
       <section class="panel">
-        <h2>PAGE HEADING</h2>
-        <p>Content coming soon. ✨</p>
+        <h2>Contact</h2>
+        <p>Questions, collabs, or custom orders? I’d love to hear from you.</p>
+
+        <div class="contact-row">
+          <div class="contact-item">
+            <strong>Email:</strong>
+            <br><a href="mailto:hello@twistedgypsy.io">hello@twistedgypsy.io</a>
+          </div>
+          <div class="contact-item">
+            <strong>Instagram:</strong>
+            <br><a href="https://instagram.com/" target="_blank" rel="noopener">@twistedgypsy</a>
+          </div>
+          <div class="contact-item">
+            <strong>Shop:</strong>
+            <br><a href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">twistedgypsy.dashery.com</a>
+          </div>
+        </div>
       </section>
     </main>
 
     <footer>&copy; <script>document.write(new Date().getFullYear())</script> Twisted Gypsy</footer>
   </div>
 
+  <!-- inline starfield so it always loads -->
   <script>
   (function(){const c=document.getElementById('tg-stars');if(!c)return;const x=c.getContext('2d');let w,h,d,S=[];
-  const G=140,W=100;function R(){d=window.devicePixelRatio||1;w=c.width=innerWidth*d;h=c.height=innerHeight*d;c.style.width=innerWidth+'px';c.style.height=innerHeight+'px'}
-  function mk(col){const g=col==='gold',r=(Math.random()*(g?2.6:1.9)+(g?1:0.7))*d;return{x:Math.random()*w,y:Math.random()*h,r,a:Math.random()*(g?.7:.6)+(g?.6:.5),t:Math.random()*6.283,v:Math.random()*(g?.003:.0012)+(g?.0015:.001),dx:(Math.random()-.5)*(g?.22:.18),dy:(Math.random()-.5)*(g?.16:.12),f:Math.random()*.35+.65,col}}
-  function init(){S=[];for(let i=0;i<G;i++)S.push(mk('gold'));for(let i=0;i<W;i++)S.push(mk('white'))}
-  function draw(s,p){const r=s.r*(.55+.45*p*s.f),a=s.a*(.45+.55*p),col=s.col==='gold'?'212,175,55':'255,255,255',g=x.createRadialGradient(s.x,s.y,0,s.x,s.y,r);g.addColorStop(0,`rgba(${col},${a})`);g.addColorStop(1,`rgba(${col},0)`);x.fillStyle=g;x.beginPath();x.arc(s.x,s.y,r,0,6.283);x.fill()}
-  function tick(){x.clearRect(0,0,w,h);for(const s of S){s.t+=s.v;const p=(Math.sin(s.t)+1)/2;draw(s,p);s.x+=s.dx;s.y+=s.dy;if(s.x<-12)s.x=w+12;if(s.x>w+12)s.x=-12;if(s.y<-12)s.y=h+12;if(s.y>h+12)s.y=-12}requestAnimationFrame(tick)}
-  addEventListener('resize',()=>{R();init()});R();init();tick()})();
+    const G=140,W=100;
+    function R(){d=window.devicePixelRatio||1;w=c.width=innerWidth*d;h=c.height=innerHeight*d;c.style.width=innerWidth+'px';c.style.height=innerHeight+'px'}
+    function mk(col){const g=col==='gold',r=(Math.random()*(g?2.6:1.9)+(g?1:0.7))*d;return{x:Math.random()*w,y:Math.random()*h,r,a:Math.random()*(g?.7:.6)+(g?.6:.5),t:Math.random()*6.283,v:Math.random()*(g?.003:.0012)+(g?.0015:.001),dx:(Math.random()-.5)*(g?.22:.18),dy:(Math.random()-.5)*(g?.16:.12),f:Math.random()*.35+.65,col}}
+    function init(){S=[];for(let i=0;i<G;i++)S.push(mk('gold'));for(let i=0;i<W;i++)S.push(mk('white'))}
+    function draw(s,p){const r=s.r*(.55+.45*p*s.f),a=s.a*(.45+.55*p),col=s.col==='gold'?'212,175,55':'255,255,255',g=x.createRadialGradient(s.x,s.y,0,s.x,s.y,r);g.addColorStop(0,`rgba(${col},${a})`);g.addColorStop(1,`rgba(${col},0)`);x.fillStyle=g;x.beginPath();x.arc(s.x,s.y,r,0,6.283);x.fill()}
+    function tick(){x.clearRect(0,0,w,h);for(const s of S){s.t+=s.v;const p=(Math.sin(s.t)+1)/2;draw(s,p);s.x+=s.dx;s.y+=s.dy;if(s.x<-12)s.x=w+12;if(s.x>w+12)s.x=-12;if(s.y<-12)s.y=h+12;if(s.y>h+12)s.y=-12}requestAnimationFrame(tick)}
+    addEventListener('resize',()=>{R();init()});R();init();tick()})();
   </script>
 </body>
 </html>
