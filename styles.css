@@ -148,3 +148,7 @@ body::before{
 
 /* Make sure your content is above the stars (keep this) */
 header, nav, main, section, footer { position: relative; z-index: 1; }
+/* Fix bullet navs anywhere */
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 22px; justify-content: center; }
+nav li { list-style: none; }
+nav a { text-decoration: none; }
