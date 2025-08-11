@@ -1,4 +1,4 @@
-            <!DOCTYPE html>
+          <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,37 +6,9 @@
   <title>E-Books • Twisted Gypsy</title>
   <link rel="icon" href="favicon.png" />
   <link rel="stylesheet" href="styles.css?v=3" />
-  <style>
-    .ebooks-hero { padding: 40px 16px; background: rgba(0,0,0,.65); }
-    .ebooks-grid {
-      display:grid; gap:18px;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      max-width: 980px; margin: 22px auto; padding: 0 16px 40px;
-    }
-    .ebook-card {
-      background: rgba(0,0,0,.7);
-      border:1px solid rgba(212,175,55,.6);
-      border-radius: 14px; padding: 18px; text-align:left;
-    }
-    .ebook-cover {
-      width:100%; height: 320px; object-fit: cover; border-radius: 10px;
-      border:1px solid rgba(212,175,55,.5); margin-bottom: 12px; background:#0b0b0b;
-    }
-    .ebook-title { color:#d4af37; margin: 6px 0 4px; font-size: 1.2rem; }
-    .ebook-price { color:#ffd700; font-weight:700; margin: 6px 0 10px; }
-    .btn-buy {
-      display:inline-block; padding:10px 16px; border-radius:999px;
-      background:#d4af37; color:#000; font-weight:700; text-decoration:none;
-      box-shadow:0 0 12px rgba(212,175,55,.45);
-      transition:transform .2s ease, box-shadow .2s ease;
-    }
-    .btn-buy:hover { transform: translateY(-2px); box-shadow:0 0 18px rgba(212,175,55,.7); }
-    #tg-stars { position:fixed; inset:0; z-index:0; pointer-events:none; }
-    header, nav, main, section, footer { position:relative; z-index:1; }
-  </style>
 </head>
 <body>
-  <canvas id="tg-stars" aria-hidden="true"></canvas>
+  <canvas id="tg-stars"></canvas>
 
   <header>
     <h1>🌙 Twisted Gypsy 🌙</h1>
@@ -52,28 +24,25 @@
   </header>
 
   <main>
-    <section class="ebooks-hero">
+    <section class="feature">
       <h2>📚 Twisted Gypsy E-Books</h2>
       <p>Dive into soulful guides and cosmic wisdom. Instant download after purchase.</p>
     </section>
 
-    <section class="ebooks-grid">
-
-      <!-- E-BOOK #1 -->
+    <section class="ebooks-gallery">
       <article class="ebook-card">
-        <img class="ebook-cover" src="https://placehold.co/700x1000/0b0b0b/d4af37?text=E-Book+Cover" alt="E-Book Cover">
+        <!-- Your uploaded cover (must exist at /ebook-cover.jpg) -->
+        <img class="ebook-cover" src="ebook-cover.jpg" alt="E-Book Cover" />
+
         <h3 class="ebook-title">Twisted Gypsy Sample E-Book</h3>
         <p>This is a sample e-book so you can see how checkout and downloads will work for your real products.</p>
         <div class="ebook-price">$14.99</div>
 
         <!-- Live Payhip link -->
-        <a class="btn-buy"
-           href="https://payhip.com/b/bXA53"
-           target="_blank" rel="noopener">
+        <a class="btn-buy" href="https://payhip.com/b/bXA53" target="_blank" rel="noopener">
           Buy with PayPal or Card
         </a>
       </article>
-
     </section>
   </main>
 
@@ -81,45 +50,6 @@
     <p>&copy; <script>document.write(new Date().getFullYear())</script> Twisted Gypsy</p>
   </footer>
 
-  <!-- Starfield (same as homepage) -->
-  <script>
-  (function () {
-    const c = document.getElementById('tg-stars');
-    const ctx = c.getContext('2d');
-    let w, h, dpr, stars = [];
-    const GOLD_N = 140, WHITE_N = 100;
-
-    function resize() {
-      dpr = window.devicePixelRatio || 1;
-      w = c.width = innerWidth * dpr;
-      h = c.height = innerHeight * dpr;
-      c.style.width = innerWidth + 'px';
-      c.style.height = innerHeight + 'px';
-    }
-    function mk(color) {
-      const base = color === 'gold';
-      const r = (Math.random() * (base ? 2.6 : 1.9) + (base ? 1.0 : 0.7)) * dpr;
-      return { x: Math.random()*w, y: Math.random()*h, r,
-        a: Math.random()*(base?0.7:0.6)+(base?0.6:0.5),
-        t: Math.random()*Math.PI*2,
-        v: Math.random()*(base?0.003:0.0012)+(base?0.0015:0.001),
-        dx:(Math.random()-0.5)*(base?0.22:0.18),
-        dy:(Math.random()-0.5)*(base?0.16:0.12),
-        flick: Math.random()*0.35+0.65, color };
-    }
-    function init(){ stars=[]; for(let i=0;i<GOLD_N;i++)stars.push(mk('gold')); for(let i=0;i<WHITE_N;i++)stars.push(mk('white')); }
-    function draw(s,p){ const r=s.r*(0.55+0.45*p*s.flick), a=s.a*(0.45+0.55*p);
-      const col=s.color==='gold'?'212,175,55':'255,255,255';
-      const g=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,r);
-      g.addColorStop(0,`rgba(${col},${a})`); g.addColorStop(1,`rgba(${col},0)`);
-      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(s.x,s.y,r,0,Math.PI*2); ctx.fill(); }
-    function tick(){ ctx.clearRect(0,0,w,h);
-      for(const s of stars){ s.t+=s.v; const p=(Math.sin(s.t)+1)/2; draw(s,p); s.x+=s.dx; s.y+=s.dy;
-        if(s.x<-12)s.x=w+12; if(s.x>w+12)s.x=-12; if(s.y<-12)s.y=h+12; if(s.y>h+12)s.y=-12; }
-      requestAnimationFrame(tick); }
-    addEventListener('resize',()=>{resize();init();});
-    resize(); init(); tick();
-  })();
-  </script>
+  <script src="main.js?v=3"></script>
 </body>
-</html>
+</html>          
