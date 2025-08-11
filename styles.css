@@ -152,3 +152,7 @@ header, nav, main, section, footer { position: relative; z-index: 1; }
 nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 22px; justify-content: center; }
 nav li { list-style: none; }
 nav a { text-decoration: none; }
+/* Stars canvas behind content */
+#tg-stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+/* Lift real content above stars */
+header, nav, main, section, footer { position: relative; z-index: 1; }
