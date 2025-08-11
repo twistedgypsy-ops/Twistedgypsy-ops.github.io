@@ -1,1 +1,141 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>About - Twisted Gypsy</title><link rel='stylesheet' href='assets/css/styles.css'><link rel='icon' href='assets/img/favicon.png'><script defer src="main.js?v=1"></script></head><body><div class='header'><h1>About Us</h1><div class='nav'><a href='index.html'>Home</a><a href='about.html'>About</a><a href='shop.html'>Shop</a><a href='blog.html'>Blog</a><a href='events.html'>Events</a><a href='contact.html'>Contact</a></div></div><div class='section'><p>Twisted Gypsy is your space for all things soulful, mystical, and adventurous.</p></div><div class='footer'>&copy; 2025 Twisted Gypsy</div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About • Twisted Gypsy</title>
+  <link rel="icon" href="favicon.png" />
+  <link rel="stylesheet" href="styles.css?v=1" />
+  <style>
+    #tg-stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    header, nav, main, section, footer { position: relative; z-index: 1; }
+    .about-section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(0,0,0,0.65);
+      border-radius: 14px;
+      border: 1px solid rgba(212,175,55,0.6);
+    }
+    .about-section h2 {
+      color: #d4af37;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="tg-stars" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <h1>🌙 Twisted Gypsy 🌙</h1>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="ebooks.html">E-Books</a>
+      <a href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">Shop</a>
+      <a href="blog.html">Blog</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about-section">
+      <h2>About Twisted Gypsy</h2>
+      <p>Welcome to <strong>Twisted Gypsy</strong> — where cosmic dreams meet everyday magic. ✨  
+      I’m Sherri Jean, a free spirit with a wild heart, a love for the stars, and a mission to help souls live more boldly, beautifully, and authentically.</p>
+
+      <p>Here you’ll find soulful creations — from celestial-inspired merch to empowering e-books — all designed to raise your vibe, spark your spirit, and remind you of the magic you already carry within.</p>
+
+      <p>Twisted Gypsy isn’t just a brand — it’s a lifestyle. It’s about chasing adventure, embracing the unknown, and surrounding yourself with things that light you up. Whether you’re here to shop, learn, or simply soak in the vibes, you’re part of this tribe now.</p>
+
+      <p>🌙 <strong>Live free. Love big. Shine bright.</strong>  
+      That’s the Twisted Gypsy way.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    © <script>document.write(new Date().getFullYear())</script> Twisted Gypsy
+  </footer>
+
+  <!-- Star background script -->
+  <script>
+  (function () {
+    const c = document.getElementById('tg-stars');
+    const ctx = c.getContext('2d');
+
+    let w, h, dpr, stars = [];
+    const GOLD_N = 140, WHITE_N = 100;
+
+    function resize() {
+      dpr = window.devicePixelRatio || 1;
+      w = c.width = innerWidth * dpr;
+      h = c.height = innerHeight * dpr;
+      c.style.width = innerWidth + 'px';
+      c.style.height = innerHeight + 'px';
+    }
+
+    function mk(color) {
+      const base = color === 'gold';
+      const r = (Math.random() * (base ? 2.6 : 1.9) + (base ? 1.0 : 0.7)) * dpr;
+      return {
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r,
+        a: Math.random() * (base ? 0.7 : 0.6) + (base ? 0.6 : 0.5),
+        t: Math.random() * Math.PI * 2,
+        v: Math.random() * (base ? 0.003 : 0.0012) + (base ? 0.0015 : 0.001),
+        dx: (Math.random() - 0.5) * (base ? 0.22 : 0.18),
+        dy: (Math.random() - 0.5) * (base ? 0.16 : 0.12),
+        flick: Math.random() * 0.35 + 0.65,
+        color
+      };
+    }
+
+    function init() {
+      stars = [];
+      for (let i = 0; i < GOLD_N; i++) stars.push(mk('gold'));
+      for (let i = 0; i < WHITE_N; i++) stars.push(mk('white'));
+    }
+
+    function draw(s, pulse) {
+      const radius = s.r * (0.55 + 0.45 * pulse * s.flick);
+      const alpha = s.a * (0.45 + 0.55 * pulse);
+      const col = s.color === 'gold' ? '212,175,55' : '255,255,255';
+      const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, radius);
+      g.addColorStop(0, `rgba(${col},${alpha})`);
+      g.addColorStop(1, `rgba(${col},0)`);
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      for (const s of stars) {
+        s.t += s.v;
+        const pulse = (Math.sin(s.t) + 1) / 2;
+        draw(s, pulse);
+        s.x += s.dx;
+        s.y += s.dy;
+        if (s.x < -12) s.x = w + 12;
+        if (s.x > w + 12) s.x = -12;
+        if (s.y < -12) s.y = h + 12;
+        if (s.y > h + 12) s.y = -12;
+      }
+      requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('resize', () => { resize(); init(); });
+    resize(); init(); tick();
+  })();
+  </script>
+</body>
+</html>
