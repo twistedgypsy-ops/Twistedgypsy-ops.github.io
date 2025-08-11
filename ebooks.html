@@ -1,55 +1,42 @@
-          <!DOCTYPE html>
+       <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>E-Books • Twisted Gypsy</title>
-  <link rel="icon" href="favicon.png" />
-  <link rel="stylesheet" href="styles.css?v=3" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Books • Twisted Gypsy</title>
+    <link rel="stylesheet" href="styles.css?v11">
 </head>
 <body>
-  <canvas id="tg-stars"></canvas>
+    <!-- Star background -->
+    <canvas id="tg-stars"></canvas>
 
-  <header>
-    <h1>🌙 Twisted Gypsy 🌙</h1>
-    <nav class="nav">
-      <a href="index.html?v=3">Home</a>
-      <a href="about.html?v=3">About</a>
-      <a href="ebooks.html?v=3">E-Books</a>
-      <a href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">Shop</a>
-      <a href="blog.html?v=3">Blog</a>
-      <a href="events.html?v=3">Events</a>
-      <a href="contact.html?v=3">Contact</a>
-    </nav>
-  </header>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="ebooks.html">E-Books</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <section class="feature">
-      <h2>📚 Twisted Gypsy E-Books</h2>
-      <p>Dive into soulful guides and cosmic wisdom. Instant download after purchase.</p>
-    </section>
+    <main>
+        <section class="ebook-section">
+            <div class="ebook-card">
+                <img src="ebook-cover.jpg" alt="Twisted Gypsy Sample E-Book Cover" class="ebook-image">
+                <h3>Twisted Gypsy Sample E-Book</h3>
+                <p>This is a sample e-book so you can see how checkout and downloads will work for your real products.</p>
+                <p class="price">$14.99</p>
+                <a href="https://payhip.com/b/bXA53" target="_blank" class="buy-button">Buy with PayPal or Card</a>
+            </div>
+        </section>
+    </main>
 
-    <section class="ebooks-gallery">
-      <article class="ebook-card">
-        <!-- Your uploaded cover (must exist at /ebook-cover.jpg) -->
-        <img class="ebook-cover" src="ebook-cover.jpg" alt="E-Book Cover" />
-
-        <h3 class="ebook-title">Twisted Gypsy Sample E-Book</h3>
-        <p>This is a sample e-book so you can see how checkout and downloads will work for your real products.</p>
-        <div class="ebook-price">$14.99</div>
-
-        <!-- Live Payhip link -->
-        <a class="btn-buy" href="https://payhip.com/b/bXA53" target="_blank" rel="noopener">
-          Buy with PayPal or Card
-        </a>
-      </article>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; <script>document.write(new Date().getFullYear())</script> Twisted Gypsy</p>
-  </footer>
-
-  <script src="main.js?v=3"></script>
+    <script src="main.js?v11"></script>
 </body>
-</html>          
+</html>   
