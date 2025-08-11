@@ -1,51 +1,122 @@
       <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Twisted Gypsy</title>
-  <link rel="icon" href="favicon.png" />
-  <link rel="stylesheet" href="styles.css?v=3" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twisted Gypsy</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <canvas id="tg-stars"></canvas>
+    <!-- Stars Background -->
+    <canvas id="tg-stars"></canvas>
 
-  <header>
-    <h1>🌙 Twisted Gypsy 🌙</h1>
-    <nav class="nav">
-      <a href="index.html?v=3">Home</a>
-      <a href="about.html?v=3">About</a>
-      <a href="ebooks.html?v=3">E-Books</a>
-      <a href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">Shop</a>
-      <a href="blog.html?v=3">Blog</a>
-      <a href="events.html?v=3">Events</a>
-      <a href="contact.html?v=3">Contact</a>
-    </nav>
-  </header>
+    <!-- Header -->
+    <header>
+        <h1>🌙 Twisted Gypsy 🌙</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="ebooks.html">E-Books</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <section class="hero">
-      <h2>Your Celestial Hub for Soulful Living</h2>
-      <p>Explore our mystical world of merch, e-books, and cosmic adventures.</p>
-    </section>
+    <!-- Hero Section -->
+    <main>
+        <section class="hero">
+            <h2>🌟 Welcome to Twisted Gypsy 🌟</h2>
+            <p>Journey through soulful living, cosmic wisdom, and magical adventures.</p>
+        </section>
 
-    <section class="feature">
-      <h3>✨ Mystical Merch</h3>
-      <p>Boho-inspired apparel, jewelry, and home decor to elevate your vibe.</p>
-      <a class="btn" href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">Shop Now</a>
-    </section>
+        <!-- E-Book Section -->
+        <section class="ebooks">
+            <h2>📚 Twisted Gypsy E-Books</h2>
+            <p>Dive into soulful guides and cosmic wisdom. Instant download after purchase.</p>
+            <div class="ebook-card">
+                <img src="ebook-cover.jpg" alt="Twisted Gypsy Sample E-Book">
+                <h3>Twisted Gypsy Sample E-Book</h3>
+                <p>This is a sample e-book so you can see how checkout and downloads will work for your real products.</p>
+                <span class="price">$14.99</span>
+                <a href="https://payhip.com/b/bXA53" class="buy-button">Buy with PayPal or Card</a>
+            </div>
+        </section>
+    </main>
 
-    <section class="feature">
-      <h3>📚 Soulful E-Books</h3>
-      <p>Guides on manifestation, spiritual growth, and abundant living.</p>
-      <a class="btn" href="ebooks.html?v=3">Explore E-Books</a>
-    </section>
-  </main>
+    <footer>
+        <p>&copy; 2025 Twisted Gypsy. All rights reserved.</p>
+    </footer>
 
-  <footer>
-    <p>&copy; 2025 Twisted Gypsy. All rights reserved.</p>
-  </footer>
+    <!-- Stars Script Inline -->
+    <script>
+    (function () {
+      const c = document.getElementById('tg-stars');
+      if (!c) return;
+      const ctx = c.getContext('2d');
+      let w, h, dpr, stars = [];
+      const GOLD_N = 140, WHITE_N = 100;
 
-  <script src="main.js?v=3"></script>
+      function resize() {
+        dpr = window.devicePixelRatio || 1;
+        w = c.width = innerWidth * dpr;
+        h = c.height = innerHeight * dpr;
+        c.style.width = innerWidth + 'px';
+        c.style.height = innerHeight + 'px';
+      }
+
+      function make(color) {
+        const isGold = color === 'gold';
+        const r = (Math.random() * (isGold ? 2.6 : 1.9) + (isGold ? 1.0 : 0.7)) * dpr;
+        return {
+          x: Math.random() * w, y: Math.random() * h, r,
+          a: Math.random() * (isGold ? 0.7 : 0.6) + (isGold ? 0.6 : 0.5),
+          t: Math.random() * Math.PI * 2,
+          v: Math.random() * (isGold ? 0.003 : 0.0012) + (isGold ? 0.0015 : 0.001),
+          dx: (Math.random() - 0.5) * (isGold ? 0.22 : 0.18),
+          dy: (Math.random() - 0.5) * (isGold ? 0.16 : 0.12),
+          flick: Math.random() * 0.35 + 0.65, color
+        };
+      }
+
+      function init() {
+        stars = [];
+        for (let i = 0; i < GOLD_N; i++) stars.push(make('gold'));
+        for (let i = 0; i < WHITE_N; i++) stars.push(make('white'));
+      }
+
+      function draw(s, p) {
+        const r = s.r * (0.55 + 0.45 * p * s.flick);
+        const a = s.a * (0.45 + 0.55 * p);
+        const col = s.color === 'gold' ? '212,175,55' : '255,255,255';
+        const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, r);
+        g.addColorStop(0, `rgba(${col},${a})`);
+        g.addColorStop(1, `rgba(${col},0)`);
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(s.x, s.y, r, 0, Math.PI * 2); ctx.fill();
+      }
+
+      function tick() {
+        ctx.clearRect(0, 0, w, h);
+        for (const s of stars) {
+          s.t += s.v;
+          const p = (Math.sin(s.t) + 1) / 2;
+          draw(s, p);
+          s.x += s.dx; s.y += s.dy;
+          if (s.x < -12) s.x = w + 12;
+          if (s.x > w + 12) s.x = -12;
+          if (s.y < -12) s.y = h + 12;
+          if (s.y > h + 12) s.y = -12;
+        }
+        requestAnimationFrame(tick);
+      }
+
+      addEventListener('resize', () => { resize(); init(); });
+      resize(); init(); tick();
+    })();
+    </script>
 </body>
 </html>
