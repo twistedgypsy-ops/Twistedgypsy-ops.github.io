@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -6,67 +6,54 @@
   <style>
     :root{--gold:#d4af37;--fg:#f5f5f5;--bg:#000}
     html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-
-    /* stars behind everything */
     #tg-stars{position:fixed;inset:0;z-index:-1;pointer-events:none}
-
-    /* content above stars */
     .content{position:relative;z-index:10}
-
     header h1{margin:18px 0;text-align:center;color:var(--gold);text-shadow:0 0 10px rgba(212,175,55,.6)}
     nav{display:flex;justify-content:center;flex-wrap:wrap;gap:18px;padding:10px 0;border-block:1px solid rgba(212,175,55,.4);box-shadow:0 0 12px rgba(212,175,55,.35)}
     nav a{color:var(--gold);text-decoration:none;font-weight:700}
     nav a:hover{color:#fff176;text-shadow:0 0 8px rgba(212,175,55,.8)}
-
     main{max-width:900px;margin:20px auto;padding:16px}
     .panel{background:rgba(0,0,0,.45);border:1px solid rgba(212,175,55,.35);border-radius:14px;padding:20px}
     h2{color:var(--gold);margin-top:0}
-
-    .contact-row{display:grid;gap:14px}
-    .contact-item{background:rgba(0,0,0,.55);border:1px solid rgba(212,175,55,.4);border-radius:12px;padding:14px}
+    .contact-item{margin-bottom:15px}
     .contact-item a{color:var(--gold);text-decoration:none;font-weight:700}
     .contact-item a:hover{text-shadow:0 0 8px rgba(212,175,55,.8)}
-
     footer{padding:20px 0;text-align:center;color:var(--gold)}
   </style>
 </head>
 <body>
-  <!-- stars canvas -->
   <canvas id="tg-stars" aria-hidden="true"></canvas>
-
-  <!-- everything visible goes inside .content so it's above stars -->
   <div class="content">
     <header>
       <h1>🌙 Twisted Gypsy 🌙</h1>
       <nav>
-        <a href="index.html?v=starfix3">Home</a>
-        <a href="about.html?v=starfix3">About</a>
-        <a href="ebooks.html?v=starfix3">E-Books</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="ebooks.html">E-Books</a>
         <a href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">Shop</a>
-        <a href="blog.html?v=starfix3">Blog</a>
-        <a href="events.html?v=starfix3">Events</a>
-        <a href="contact.html?v=starfix3">Contact</a>
+        <a href="blog.html">Blog</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html" aria-current="page">Contact</a>
       </nav>
     </header>
 
     <main>
       <section class="panel">
         <h2>Contact</h2>
-        <p>Questions, collabs, or custom orders? I’d love to hear from you.</p>
-
-        <div class="contact-row">
-          <div class="contact-item">
-            <strong>Email:</strong>
-            <br><a href="mailto:hello@twistedgypsy.io">hello@twistedgypsy.io</a>
-          </div>
-          <div class="contact-item">
-            <strong>Instagram:</strong>
-            <br><a href="https://instagram.com/" target="_blank" rel="noopener">@twistedgypsy</a>
-          </div>
-          <div class="contact-item">
-            <strong>Shop:</strong>
-            <br><a href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">twistedgypsy.dashery.com</a>
-          </div>
+        <div class="contact-item">
+          📧 Email: <a href="mailto:sherrijm01@gmail.com">sherrijm01@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          📷 Instagram: <a href="https://www.instagram.com/twistedgypsy32?igsh=cDJqbTRuYThtNXJu" target="_blank">@twistedgypsy32</a>
+        </div>
+        <div class="contact-item">
+          ▶️ YouTube: <a href="https://youtube.com/@twistedgypsy32?si=uu_5r1LF5DWkOLun" target="_blank">Twisted Gypsy</a>
+        </div>
+        <div class="contact-item">
+          👍 Facebook: <a href="https://www.facebook.com/share/1CEaSqmbTG/" target="_blank">Facebook Page</a>
+        </div>
+        <div class="contact-item">
+          🛍 Shop: <a href="https://twistedgypsy.dashery.com/" target="_blank">Twisted Gypsy Store</a>
         </div>
       </section>
     </main>
@@ -74,7 +61,6 @@
     <footer>&copy; <script>document.write(new Date().getFullYear())</script> Twisted Gypsy</footer>
   </div>
 
-  <!-- inline starfield so it always loads -->
   <script>
   (function(){const c=document.getElementById('tg-stars');if(!c)return;const x=c.getContext('2d');let w,h,d,S=[];
     const G=140,W=100;
@@ -86,4 +72,4 @@
     addEventListener('resize',()=>{R();init()});R();init();tick()})();
   </script>
 </body>
-</html>
+</html>      
