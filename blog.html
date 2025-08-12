@@ -1,36 +1,45 @@
-        <!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Twisted Gypsy Blog</title>
-  <link rel="stylesheet" href="styles.css?v=19">
+  <link rel="stylesheet" href="styles.css?v=22" />
+  <style>
+    .blog-wrap{max-width:900px;margin:16px auto;padding:0 16px;position:relative;z-index:1}
+    .post{background:rgba(0,0,0,.25);border:1px solid rgba(212,175,55,.35);border-radius:14px;padding:20px;margin-bottom:26px}
+    .post h2{color:#d4af37;margin:0 0 6px}
+    .post time{color:#d4af37;font-style:italic;font-size:.95rem}
+    .post p{line-height:1.6;margin:.6rem 0}
+    .back-btn{display:inline-block;margin-top:14px;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:800;border:1px solid #d4af37;color:#d4af37}
+    .back-btn:hover{box-shadow:0 0 12px rgba(212,175,55,.45)}
+  </style>
 </head>
 <body>
+  <canvas id="tg-stars" aria-hidden="true"></canvas>
+
   <header class="site-header">
     <h1>Twisted Gypsy Blog</h1>
     <nav>
-      <a href="index.html?v=19">Home</a>
-      <a href="about.html?v=19">About</a>
-      <a href="ebooks.html?v=19">E-Books</a>
+      <a href="index.html?v=22">Home</a>
+      <a href="about.html?v=22">About</a>
+      <a href="ebooks.html?v=22">E-Books</a>
       <a href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">Shop</a>
-      <a href="blog.html?v=19" aria-current="page">Blog</a>
-      <a href="events.html?v=19">Events</a>
-      <a href="contact.html?v=19">Contact</a>
+      <a href="blog.html?v=22" aria-current="page">Blog</a>
+      <a href="events.html?v=22">Events</a>
+      <a href="contact.html?v=22">Contact</a>
     </nav>
   </header>
 
-  <main class="blog-container">
-
-    <!-- New Blog Post -->
-    <article class="blog-post">
+  <main class="blog-wrap">
+    <!-- Post #2 (today) -->
+    <article class="post">
       <h2>Why Is It So Hard to Make a Healthy Shopping List Everyone Loves? 🛒🥦</h2>
       <time datetime="2025-08-12">August 12, 2025</time>
       <p>So, today I sat down with my coffee, ready to do something “productive” — make my healthy shopping list and place a ClickList order. You’d think this would be quick and easy, right? Nope. Not in my house.</p>
       <p>I start strong:<br>
-      - Fresh fruit? Check. 🍎<br>
-      - Veggies? Got it. 🥕<br>
-      - Chicken breasts? Sure. 🍗</p>
+      – Fresh fruit? Check. 🍎<br>
+      – Veggies? Got it. 🥕<br>
+      – Chicken breasts? Sure. 🍗</p>
       <p>Then reality hits.</p>
       <p><strong>“Can we have pizza this week?”</strong><br>
       <strong>“I don’t like broccoli anymore.”</strong><br>
@@ -47,15 +56,34 @@
       </ul>
       <p>At the end of the day, the ClickList gets placed, the groceries get picked up, and we all eat… even if there’s a little side-eye over the quinoa.</p>
       <p><em>What’s your go-to dinner that everyone in your house actually loves? Drop it in the comments — I need ideas before next week’s shopping list turns into another episode of “Grocery Wars.” 😅</em></p>
+
+      <a href="index.html?v=22" class="back-btn">← Back to Home</a>
     </article>
 
-    <!-- Older blog posts will go here -->
-    
+    <!-- Post #1 (earlier one) -->
+    <article class="post">
+      <h2>From Zero to Twinkling Stars: How I Built My Very Own Website (with a LOT of Redos)</h2>
+      <time datetime="2025-08-11">August 11, 2025</time>
+      <p>Well… I finally did it. I built my very own website! 🌙✨ Okay, okay — I didn’t exactly do it alone. I had a certain AI assistant holding my virtual hand through the process, cheering me on (and occasionally laughing <em>with</em> me) as we went through, let’s just say… <strong>a few</strong> redos.</p>
+      <p>When I first started, I didn’t know a single thing about repositories, HTML, CSS, or why my stars refused to twinkle. But I had a vision: gold and black, celestial vibes, and a little bit of Twisted Gypsy magic.</p>
+      <p>Here are just a few of the memorable moments:</p>
+      <ul>
+        <li><strong>The 404 Phase</strong> — I learned that if you see “404 error,” it’s not your site saying hello. It’s your site saying, “You forgot something, darling.”</li>
+        <li><strong>The Stars Saga</strong> — At one point, I had stars… but they were stuck at the top of the page. Then I had stars in front of <em>everything</em> so you couldn’t read a single word. Finally, they twinkled just right.</li>
+        <li><strong>The Gold and Black Victory</strong> — We must have re-uploaded files a dozen times before the background, text, and layout all decided to get along.</li>
+      </ul>
+      <p>But here’s the thing: every single redo was worth it. I now have a website that feels like <em>me</em>. It’s not just a place to post my merch and e-books — it’s my little corner of the internet where I can connect, share, and shine.</p>
+      <p>Welcome to the new home of <strong>Twisted Gypsy</strong>. Stick around, because this is just the beginning. 💫</p>
+
+      <a href="index.html?v=22" class="back-btn">← Back to Home</a>
+    </article>
   </main>
 
   <footer>
-    <a href="index.html?v=19" class="btn btn-outline">← Back to Home</a>
-    <p>© <script>document.write(new Date().getFullYear())</script> Twisted Gypsy</p>
+    © <script>document.write(new Date().getFullYear())</script> Twisted Gypsy
   </footer>
+
+  <!-- Stars -->
+  <script src="stars.js?v=1"></script>
 </body>
-</html>     
+</html>  
