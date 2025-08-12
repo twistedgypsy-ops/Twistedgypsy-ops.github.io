@@ -1,89 +1,99 @@
-     <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>E-Books • Twisted Gypsy</title>
-  <style>
-    :root{--gold:#d4af37;--fg:#f5f5f5}
-    html,body{margin:0;height:100%;background:transparent;color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    #tg-stars{position:fixed;inset:0;z-index:0;pointer-events:none}
-    .content, header, nav, main, section, footer { position:relative; z-index:1; }
-    header h1{margin:18px 0;text-align:center;color:var(--gold);text-shadow:0 0 10px rgba(212,175,55,.6)}
-    nav{display:flex;justify-content:center;flex-wrap:wrap;gap:18px;padding:10px 0;border-block:1px solid rgba(212,175,55,.4);box-shadow:0 0 12px rgba(212,175,55,.35)}
-    nav a{color:var(--gold);text-decoration:none;font-weight:700}
-    nav a:hover{color:#fff176;text-shadow:0 0 8px rgba(212,175,55,.8)}
-    .feature{padding:24px 16px;text-align:center;max-width:900px;margin:16px auto;background:rgba(0,0,0,.25);border:1px solid rgba(212,175,55,.35);border-radius:14px}
-    .feature h2{color:var(--gold);margin:0 0 8px}
-    .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));max-width:1100px;margin:10px auto 30px;padding:0 16px}
-    .card{background:rgba(0,0,0,.45);border:1px solid rgba(212,175,55,.45);border-radius:14px;padding:18px;text-align:center;box-shadow:0 0 18px rgba(212,175,55,.22)}
-    .card img{width:100%;height:auto;border-radius:10px;margin-bottom:12px;border:1px solid rgba(212,175,55,.35)}
-    .title{color:var(--gold);margin:6px 0 4px}
-    .desc{margin:6px 0 10px;line-height:1.5}
-    .price{display:inline-block;margin:6px 0 12px;color:var(--gold);font-weight:800}
-    .buy{display:inline-block;padding:12px 22px;border-radius:999px;background:var(--gold);color:#000;font-weight:800;text-decoration:none;box-shadow:0 0 14px rgba(212,175,55,.55);transition:transform .18s,box-shadow .18s}
-    .buy:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(212,175,55,.9),0 0 40px rgba(212,175,55,.35)}
-    footer{padding:20px 0;text-align:center;color:var(--gold)}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twisted Gypsy E-Books</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        nav {
+            margin: 20px 0;
+        }
+
+        nav a {
+            color: gold;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .ebook-container {
+            background-color: #000000;
+            border: 2px solid gold;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 350px;
+            box-shadow: 0 0 15px gold;
+        }
+
+        .ebook-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: gold;
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .buy-button {
+            background-color: gold;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .buy-button:hover {
+            background-color: orange;
+        }
+    </style>
 </head>
 <body>
-  <canvas id="tg-stars" aria-hidden="true"></canvas>
-  <div class="content">
     <header>
-      <h1>🌙 Twisted Gypsy 🌙</h1>
-      <nav>
-        <a href="index.html?v=5">Home</a>
-        <a href="about.html?v=5">About</a>
-        <a href="ebooks.html?v=5" aria-current="page">E-Books</a>
-        <a href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">Shop</a>
-        <a href="blog.html?v=5">Blog</a>
-        <a href="events.html?v=5">Events</a>
-        <a href="contact.html?v=5">Contact</a>
-      </nav>
+        <h1>📚 Twisted Gypsy E-Books</h1>
+        <p>Instant download after purchase. Pay with PayPal or card via Payhip.</p>
     </header>
 
-    <main>
-      <section class="feature">
-        <h2>📚 Twisted Gypsy E-Books</h2>
-        <p>Instant download after purchase. Pay with PayPal or card via Payhip.</p>
-      </section>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="ebooks.html">E-Books</a>
+        <a href="shop.html">Shop</a>
+        <a href="blog.html">Blog</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 
-      <section class="grid">
-
-        <!-- BOOK #1: 30 Days of Soulful Living (your new one) -->
-        <article class="card">
-          <!-- Upload 30days-cover.jpg to your repo root -->
-          <img src="30days-cover.jpg" alt="Twisted Gypsy’s 30 Days of Soulful Living cover" onerror="this.style.display='none'">
-          <h3 class="title">Twisted Gypsy’s 30 Days of Soulful Living</h3>
-          <p class="desc">Transform your daily life into a sacred journey with 30 days of intentional rituals, mindful practices, and uplifting affirmations — wrapped in celestial, boho vibes.</p>
-          <div class="price">$5.00</div><br>
-          <a class="buy" href="https://payhip.com/b/w1LWZ" target="_blank" rel="noopener">Buy Now</a>
-        </article>
-
-        <!-- BOOK #2: Sample e-book (kept for demo, you can remove later) -->
-        <article class="card">
-          <img src="ebook-cover.jpg" alt="Twisted Gypsy Sample E-Book cover" onerror="this.style.display='none'">
-          <h3 class="title">Twisted Gypsy Sample E-Book</h3>
-          <p class="desc">A quick demo so you can see how checkout and downloads work for future releases.</p>
-          <div class="price">$14.99</div><br>
-          <a class="buy" href="https://payhip.com/b/bXA53" target="_blank" rel="noopener">Buy Now</a>
-        </article>
-
-      </section>
-    </main>
-
-    <footer>&copy; <script>document.write(new Date().getFullYear())</script> Twisted Gypsy</footer>
-  </div>
-
-  <!-- Stars script -->
-  <script>
-  (function(){const c=document.getElementById('tg-stars');if(!c)return;const x=c.getContext('2d');let w,h,d,S=[];
-    const G=140,W=100;
-    function R(){d=window.devicePixelRatio||1;w=c.width=innerWidth*d;h=c.height=innerHeight*d;c.style.width=innerWidth+'px';c.style.height=innerHeight+'px'}
-    function mk(col){const g=col==='gold',r=(Math.random()*(g?2.6:1.9)+(g?1:0.7))*d;return{x:Math.random()*w,y:Math.random()*h,r,a:Math.random()*(g?.7:.6)+(g?.6:.5),t:Math.random()*6.283,v:Math.random()*(g?.003:.0012)+(g?.0015:.001),dx:(Math.random()-.5)*(g?.22:.18),dy:(Math.random()-.5)*(g?.16:.12),f:Math.random()*.35+.65,col}}
-    function init(){S=[];for(let i=0;i<G;i++)S.push(mk('gold'));for(let i=0;i<W;i++)S.push(mk('white'))}
-    function draw(s,p){const r=s.r*(.55+.45*p*s.f),a=s.a*(.45+.55*p),col=s.col==='gold'?'212,175,55':'255,255,255',g=x.createRadialGradient(s.x,s.y,0,s.x,s.y,r);g.addColorStop(0,`rgba(${col},${a})`);g.addColorStop(1,`rgba(${col},0)`);x.fillStyle=g;x.beginPath();x.arc(s.x,s.y,r,0,6.283);x.fill()}
-    function tick(){x.clearRect(0,0,w,h);for(const s of S){s.t+=s.v;const p=(Math.sin(s.t)+1)/2;draw(s,p);s.x+=s.dx;s.y+=s.dy;if(s.x<-12)s.x=w+12;if(s.x>w+12)s.x=-12;if(s.y<-12)s.y=h+12;if(s.y>h+12)s.y=-12}requestAnimationFrame(tick)}
-    addEventListener('resize',()=>{R();init()});R();init();tick()})();
-  </script>
+    <section class="ebook-container">
+        <img src="ebook-cover.jpg" alt="Twisted Gypsy's 30 Days of Soulful Living">
+        <h2>Twisted Gypsy's 30 Days of Soulful Living</h2>
+        <p>Transform your daily life into a sacred journey with 30 days of intentional rituals, mindful practices, and uplifting affirmations — wrapped in celestial, boho vibes.</p>
+        <div class="price">$5.00</div>
+        <a class="buy-button" href="https://payhip.com/b/w1LWZ" target="_blank">Buy Now</a>
+    </section>
 </body>
-</html>
+</html>           
