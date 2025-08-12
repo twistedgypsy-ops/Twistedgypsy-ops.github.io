@@ -1,150 +1,61 @@
-     <!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blog • Twisted Gypsy</title>
-  <style>
-    :root{--gold:#d4af37;--fg:#f5f5f5}
-    html,body{margin:0;height:100%;background:transparent;color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    #tg-stars{position:fixed;inset:0;z-index:0;pointer-events:none}
-    .content, header, nav, main, section, footer { position:relative; z-index:1; }
-    header h1{margin:18px 0;text-align:center;color:var(--gold);text-shadow:0 0 10px rgba(212,175,55,.6)}
-    nav{display:flex;justify-content:center;flex-wrap:wrap;gap:18px;padding:10px 0;
-        border-block:1px solid rgba(212,175,55,.4);box-shadow:0 0 12px rgba(212,175,55,.35)}
-    nav a{color:var(--gold);text-decoration:none;font-weight:700}
-    nav a:hover{color:#fff176;text-shadow:0 0 8px rgba(212,175,55,.8)}
-    main{max-width:900px;margin:20px auto;padding:16px}
-    .post{background:rgba(0,0,0,.25);border:1px solid rgba(212,175,55,.35);
-          border-radius:14px;padding:20px;margin-bottom:30px}
-    h2{color:var(--gold);margin-top:0}
-    p{line-height:1.6}
-    .date{color:var(--gold);font-style:italic;font-size:0.9em;margin-bottom:12px}
-    .back-btn{display:inline-block;margin-top:20px;padding:10px 16px;
-              background:var(--gold);color:#000;font-weight:700;
-              border-radius:8px;text-decoration:none;transition:all .2s}
-    .back-btn:hover{background:#fff176}
-    footer{padding:20px 0;text-align:center;color:var(--gold)}
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twisted Gypsy Blog</title>
+  <link rel="stylesheet" href="styles.css?v=19">
 </head>
 <body>
-  <canvas id="tg-stars" aria-hidden="true"></canvas>
+  <header class="site-header">
+    <h1>Twisted Gypsy Blog</h1>
+    <nav>
+      <a href="index.html?v=19">Home</a>
+      <a href="about.html?v=19">About</a>
+      <a href="ebooks.html?v=19">E-Books</a>
+      <a href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">Shop</a>
+      <a href="blog.html?v=19" aria-current="page">Blog</a>
+      <a href="events.html?v=19">Events</a>
+      <a href="contact.html?v=19">Contact</a>
+    </nav>
+  </header>
 
-  <div class="content">
-    <header>
-      <h1>🌙 Twisted Gypsy Blog 🌙</h1>
-      <nav>
-        <a href="index.html?v=4">Home</a>
-        <a href="about.html?v=4">About</a>
-        <a href="ebooks.html?v=4">E-Books</a>
-        <a href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">Shop</a>
-        <a href="blog.html?v=4" aria-current="page">Blog</a>
-        <a href="events.html?v=4">Events</a>
-        <a href="contact.html?v=4">Contact</a>
-      </nav>
-    </header>
+  <main class="blog-container">
 
-    <main>
-      <article class="post">
-        <h2>From Zero to Twinkling Stars: How I Built My Very Own Website (with a LOT of Redos)</h2>
-        <div class="date">August 11, 2025</div>
+    <!-- New Blog Post -->
+    <article class="blog-post">
+      <h2>Why Is It So Hard to Make a Healthy Shopping List Everyone Loves? 🛒🥦</h2>
+      <time datetime="2025-08-12">August 12, 2025</time>
+      <p>So, today I sat down with my coffee, ready to do something “productive” — make my healthy shopping list and place a ClickList order. You’d think this would be quick and easy, right? Nope. Not in my house.</p>
+      <p>I start strong:<br>
+      - Fresh fruit? Check. 🍎<br>
+      - Veggies? Got it. 🥕<br>
+      - Chicken breasts? Sure. 🍗</p>
+      <p>Then reality hits.</p>
+      <p><strong>“Can we have pizza this week?”</strong><br>
+      <strong>“I don’t like broccoli anymore.”</strong><br>
+      <strong>“Why is there quinoa in the cart?!”</strong></p>
+      <p>Suddenly my nice, clean, healthy shopping list turns into a negotiation meeting. I’m over here trying to make dinners that don’t make me feel like I’ve derailed my health goals, while also keeping the whole house happy. Spoiler alert: it’s almost impossible.</p>
+      <p>The biggest challenge? <strong>Dinner ideas.</strong><br>
+      If I ask, “What do you want for dinner?” the answer is always <em>“I don’t know.”</em> But the second I actually make something, I get, <em>“Do we have to eat this?”</em></p>
+      <p>Honestly, it’s like playing a game of “Dinner Roulette” — and no matter how much I plan, someone’s not going to be thrilled.</p>
+      <p>But here’s what I’ve learned:</p>
+      <ul>
+        <li>Keep a <strong>rotation of 5–7 easy, healthy dinners</strong> everyone tolerates (even if they don’t throw you a parade for it).</li>
+        <li>Mix in <strong>one new recipe a week</strong> to break the boredom.</li>
+        <li>Don’t stress if it’s not perfect — even small swaps (whole grain pasta instead of regular, lean meat instead of fatty cuts) make a difference.</li>
+      </ul>
+      <p>At the end of the day, the ClickList gets placed, the groceries get picked up, and we all eat… even if there’s a little side-eye over the quinoa.</p>
+      <p><em>What’s your go-to dinner that everyone in your house actually loves? Drop it in the comments — I need ideas before next week’s shopping list turns into another episode of “Grocery Wars.” 😅</em></p>
+    </article>
 
-        <p>Well… I finally did it. I built my very own website! 🌙✨ Okay, okay — I didn’t exactly do it alone. I had a certain AI assistant holding my virtual hand through the process, cheering me on (and occasionally laughing <em>with</em> me) as we went through, let’s just say… <strong>a few</strong> redos.</p>
+    <!-- Older blog posts will go here -->
+    
+  </main>
 
-        <p>When I first started, I didn’t know a single thing about repositories, HTML, CSS, or why my stars refused to twinkle. But I had a vision: gold and black, celestial vibes, and a little bit of Twisted Gypsy magic.</p>
-
-        <p>Here are just a few of the memorable moments:</p>
-        <ul>
-          <li><strong>The 404 Phase</strong> — I learned that if you see “404 error,” it’s not your site saying hello. It’s your site saying, “You forgot something, darling.”</li>
-          <li><strong>The Stars Saga</strong> — At one point, I had stars… but they were stuck at the top of the page, like they were scared to mingle with the rest of the site. Then I had stars in front of <em>everything</em> so you couldn’t read a single word. Finally, they twinkled just right.</li>
-          <li><strong>The Gold and Black Victory</strong> — We must have re-uploaded files a dozen times before the background, text, and layout all decided to get along.</li>
-        </ul>
-
-        <p>But here’s the thing: every single redo was worth it. I now have a website that feels like <em>me</em>. It’s not just a place to post my merch and e-books — it’s my little corner of the internet where I can connect, share, and shine.</p>
-
-        <p>So, if you’ve ever dreamed about having your own site, here’s my advice:</p>
-        <ul>
-          <li>✅ Don’t be afraid to mess up.</li>
-          <li>✅ Laugh at the mistakes.</li>
-          <li>✅ Celebrate the little wins — like your stars finally deciding to twinkle.</li>
-        </ul>
-
-        <p>Welcome to the new home of <strong>Twisted Gypsy</strong>. Stick around, because this is just the beginning. 💫</p>
-
-        <a href="index.html?v=4" class="back-btn">← Back to Home</a>
-      </article>
-    </main>
-
-    <footer>&copy; <script>document.write(new Date().getFullYear())</script> Twisted Gypsy</footer>
-  </div>
-
-  <!-- Stars script -->
-  <script>
-  (function () {
-    const c = document.getElementById('tg-stars');
-    if (!c) return;
-    const ctx = c.getContext('2d');
-    let w, h, dpr, stars = [];
-    const GOLD_N = 140, WHITE_N = 100;
-
-    function resize() {
-      dpr = window.devicePixelRatio || 1;
-      w = c.width = innerWidth * dpr;
-      h = c.height = innerHeight * dpr;
-      c.style.width = innerWidth + 'px';
-      c.style.height = innerHeight + 'px';
-    }
-
-    function make(color) {
-      const isGold = color === 'gold';
-      const r = (Math.random() * (isGold ? 2.6 : 1.9) + (isGold ? 1.0 : 0.7)) * dpr;
-      return {
-        x: Math.random() * w, y: Math.random() * h, r,
-        a: Math.random() * (isGold ? 0.7 : 0.6) + (isGold ? 0.6 : 0.5),
-        t: Math.random() * Math.PI * 2,
-        v: Math.random() * (isGold ? 0.003 : 0.0012) + (isGold ? 0.0015 : 0.001),
-        dx: (Math.random() - 0.5) * (isGold ? 0.22 : 0.18),
-        dy: (Math.random() - 0.5) * (isGold ? 0.16 : 0.12),
-        flick: Math.random() * 0.35 + 0.65,
-        color
-      };
-    }
-
-    function init() {
-      stars = [];
-      for (let i = 0; i < GOLD_N; i++) stars.push(make('gold'));
-      for (let i = 0; i < WHITE_N; i++) stars.push(make('white'));
-    }
-
-    function drawStar(s, p) {
-      const r = s.r * (0.55 + 0.45 * p * s.flick);
-      const a = s.a * (0.45 + 0.55 * p);
-      const col = s.color === 'gold' ? '212,175,55' : '255,255,255';
-      const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, r);
-      g.addColorStop(0, `rgba(${col},${a})`);
-      g.addColorStop(1, `rgba(${col},0)`);
-      ctx.fillStyle = g;
-      ctx.beginPath(); ctx.arc(s.x, s.y, r, 0, Math.PI * 2); ctx.fill();
-    }
-
-    function tick() {
-      ctx.fillStyle = 'rgba(0,0,0,1)';
-      ctx.fillRect(0, 0, w, h);
-      for (const s of stars) {
-        s.t += s.v;
-        const p = (Math.sin(s.t) + 1) / 2;
-        drawStar(s, p);
-        s.x += s.dx; s.y += s.dy;
-        if (s.x < -12) s.x = w + 12;
-        if (s.x > w + 12) s.x = -12;
-        if (s.y < -12) s.y = h + 12;
-        if (s.y > h + 12) s.y = -12;
-      }
-      requestAnimationFrame(tick);
-    }
-
-    addEventListener('resize', () => { resize(); init(); });
-    resize(); init(); tick();
-  })();
-  </script>
+  <footer>
+    <a href="index.html?v=19" class="btn btn-outline">← Back to Home</a>
+    <p>© <script>document.write(new Date().getFullYear())</script> Twisted Gypsy</p>
+  </footer>
 </body>
-</html>          
+</html>     
