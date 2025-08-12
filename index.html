@@ -1,24 +1,43 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Twisted Gypsy</title>
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="styles.css?v=3" />
   <style>
-    /* minimal page-local styles */
-    .hero{padding:32px 16px;text-align:center;max-width:900px;margin:16px auto}
-    .feature-card{
-      background:rgba(0,0,0,.85);border:1px solid rgba(212,175,55,.6);
-      border-radius:14px;max-width:380px;margin:18px auto;padding:20px;text-align:center;
-      box-shadow:0 0 18px rgba(212,175,55,.35)
+    /* minimal page-local styles for a smaller ebook teaser */
+    .hero{padding:28px 16px;text-align:center;max-width:900px;margin:16px auto}
+    .mini-ebook{
+      background:rgba(0,0,0,.82);
+      border:1px solid rgba(212,175,55,.55);
+      border-radius:14px;
+      max-width:720px;
+      margin:14px auto 28px;
+      padding:14px;
+      box-shadow:0 0 16px rgba(212,175,55,.25);
+      display:flex; gap:14px; align-items:center;
     }
-    .feature-card img{width:100%;height:auto;border-radius:10px;border:2px solid #d4af37}
-    .feature-card h3{color:#d4af37;margin:12px 0 6px}
-    .price{color:#d4af37;font-weight:800;margin:8px 0}
-    .buy{display:inline-block;padding:12px 22px;border-radius:999px;background:#d4af37;color:#000;
-         font-weight:800;text-decoration:none;box-shadow:0 0 14px rgba(212,175,55,.55)}
-    .buy:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(212,175,55,.9),0 0 40px rgba(212,175,55,.35)}
+    .mini-ebook img{
+      width:140px; height:auto; flex:0 0 140px;
+      border-radius:10px; border:2px solid #d4af37;
+    }
+    .mini-ebook .info{flex:1 1 auto}
+    .mini-ebook h3{color:#d4af37;margin:0 0 6px;font-size:1.1rem}
+    .mini-ebook p{margin:0 0 8px; line-height:1.45}
+    .mini-ebook .price{color:#d4af37;font-weight:800;margin-right:10px}
+    .actions{display:flex; flex-wrap:wrap; gap:8px}
+    .btn{
+      display:inline-block;padding:10px 16px;border-radius:999px;
+      text-decoration:none;font-weight:800
+    }
+    .btn-buy{background:#d4af37;color:#000;box-shadow:0 0 12px rgba(212,175,55,.5)}
+    .btn-outline{border:1px solid #d4af37;color:#d4af37}
+    @media (max-width:560px){
+      .mini-ebook{flex-direction:column; text-align:center}
+      .mini-ebook img{width:160px}
+      .actions{justify-content:center}
+    }
   </style>
 </head>
 <body>
@@ -28,13 +47,13 @@
   <header>
     <h1>🌙 Twisted Gypsy 🌙</h1>
     <nav>
-      <a href="index.html?v=15" aria-current="page">Home</a>
-      <a href="about.html?v=15">About</a>
-      <a href="ebooks.html?v=15">E-Books</a>
+      <a href="index.html?v=16" aria-current="page">Home</a>
+      <a href="about.html?v=16">About</a>
+      <a href="ebooks.html?v=16">E-Books</a>
       <a href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">Shop</a>
-      <a href="blog.html?v=15">Blog</a>
-      <a href="events.html?v=15">Events</a>
-      <a href="contact.html?v=15">Contact</a>
+      <a href="blog.html?v=16">Blog</a>
+      <a href="events.html?v=16">Events</a>
+      <a href="contact.html?v=16">Contact</a>
     </nav>
   </header>
 
@@ -44,15 +63,17 @@
       <p>Cosmic vibes, soulful living, and magical creations.</p>
     </section>
 
-    <!-- Featured E-Book (replaces the old sample) -->
-    <section class="feature-card">
-      <img src="30days-cover.jpg?v=15" alt="Twisted Gypsy's 30 Days of Soulful Living">
-      <h3>30 Days of Soulful Living</h3>
-      <p>Transform your daily life with 30 days of intentional rituals, mindful practices, and uplifting affirmations.</p>
-      <div class="price">$5.00</div>
-      <a class="buy" href="https://payhip.com/b/w1LWZ" target="_blank" rel="noopener">Buy Now</a>
-      <div style="margin-top:10px;">
-        <a href="ebooks.html?v=15" style="color:#d4af37;text-decoration:none;font-weight:700;">See all e-books →</a>
+    <!-- Compact E-Book teaser -->
+    <section class="mini-ebook">
+      <img src="30days-cover.jpg?v=16" alt="30 Days of Soulful Living cover">
+      <div class="info">
+        <h3>30 Days of Soulful Living</h3>
+        <p>Daily rituals, mindful practices, and affirmations to bring more magic and intention to your life.</p>
+        <div class="actions">
+          <span class="price">$5.00</span>
+          <a class="btn btn-buy" href="https://payhip.com/b/w1LWZ" target="_blank" rel="noopener">Buy Now</a>
+          <a class="btn btn-outline" href="ebooks.html?v=16">View All E-Books</a>
+        </div>
       </div>
     </section>
   </main>
@@ -64,4 +85,4 @@
   <!-- Shared stars script -->
   <script src="stars.js?v=1"></script>
 </body>
-</html>         
+</html>
