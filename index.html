@@ -1,145 +1,67 @@
-     <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Twisted Gypsy</title>
-
-  <!-- Minimal inline CSS so content sits ABOVE the stars and is readable -->
+  <link rel="stylesheet" href="styles.css?v=2" />
   <style>
-    :root { --gold:#d4af37; --fg:#f5f5f5; --bg:#000; }
-    html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    /* star canvas behind everything */
-    #tg-stars{position:fixed;inset:0;z-index:0;pointer-events:none;display:block}
-    /* lift content above stars */
-    header,nav,main,section,footer{position:relative;z-index:1}
-    /* header + nav */
-    header h1{margin:18px 0;text-align:center;color:var(--gold);text-shadow:0 0 10px rgba(212,175,55,.6)}
-    nav{display:flex;justify-content:center;flex-wrap:wrap;gap:18px;padding:10px 0;border-block:1px solid rgba(212,175,55,.4);box-shadow:0 0 12px rgba(212,175,55,.35)}
-    nav a{color:var(--gold);text-decoration:none;font-weight:700}
-    nav a:hover{color:#fff176;text-shadow:0 0 8px rgba(212,175,55,.8)}
-    /* hero */
-    .hero{padding:32px 16px;text-align:center;max-width:900px;margin:0 auto;background:rgba(0,0,0,.45);border:1px solid rgba(212,175,55,.35);border-radius:14px}
-    .hero h2{color:var(--gold);margin:0 0 8px}
-    /* ebook card */
-    .ebooks{padding:34px 16px;max-width:1000px;margin:0 auto}
-    .ebook-card{background:rgba(0,0,0,.6);border:1px solid rgba(212,175,55,.55);border-radius:14px;padding:20px;max-width:380px;margin:18px auto;text-align:center;box-shadow:0 0 18px rgba(212,175,55,.25)}
-    .ebook-card img{width:100%;height:auto;border-radius:10px;margin-bottom:12px}
-    .price{display:inline-block;margin:8px 0;color:var(--gold);font-weight:800}
-    .buy-button{display:inline-block;padding:12px 22px;border-radius:999px;background:var(--gold);color:#000;font-weight:800;text-decoration:none;box-shadow:0 0 14px rgba(212,175,55,.55)}
-    .buy-button:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(212,175,55,.9),0 0 40px rgba(212,175,55,.35)}
-    footer{padding:20px 0;text-align:center;color:var(--gold)}
+    /* minimal page-local styles */
+    .hero{padding:32px 16px;text-align:center;max-width:900px;margin:16px auto}
+    .feature-card{
+      background:rgba(0,0,0,.85);border:1px solid rgba(212,175,55,.6);
+      border-radius:14px;max-width:380px;margin:18px auto;padding:20px;text-align:center;
+      box-shadow:0 0 18px rgba(212,175,55,.35)
+    }
+    .feature-card img{width:100%;height:auto;border-radius:10px;border:2px solid #d4af37}
+    .feature-card h3{color:#d4af37;margin:12px 0 6px}
+    .price{color:#d4af37;font-weight:800;margin:8px 0}
+    .buy{display:inline-block;padding:12px 22px;border-radius:999px;background:#d4af37;color:#000;
+         font-weight:800;text-decoration:none;box-shadow:0 0 14px rgba(212,175,55,.55)}
+    .buy:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(212,175,55,.9),0 0 40px rgba(212,175,55,.35)}
   </style>
 </head>
 <body>
-  <!-- Stars Background -->
-  <canvas id="tg-stars"></canvas>
+  <!-- Stars -->
+  <canvas id="tg-stars" aria-hidden="true"></canvas>
 
-  <!-- Header + Nav -->
   <header>
     <h1>🌙 Twisted Gypsy 🌙</h1>
     <nav>
-      <a href="index.html?v=starfix">Home</a>
-      <a href="about.html?v=starfix">About</a>
-      <a href="ebooks.html?v=starfix">E-Books</a>
+      <a href="index.html?v=15" aria-current="page">Home</a>
+      <a href="about.html?v=15">About</a>
+      <a href="ebooks.html?v=15">E-Books</a>
       <a href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">Shop</a>
-      <a href="blog.html?v=starfix">Blog</a>
-      <a href="events.html?v=starfix">Events</a>
-      <a href="contact.html?v=starfix">Contact</a>
+      <a href="blog.html?v=15">Blog</a>
+      <a href="events.html?v=15">Events</a>
+      <a href="contact.html?v=15">Contact</a>
     </nav>
   </header>
 
-  <!-- Hero -->
   <main>
     <section class="hero">
-      <h2>🌟 Welcome to Twisted Gypsy 🌟</h2>
-      <p>Journey through soulful living, cosmic wisdom, and magical adventures.</p>
+      <h2 style="color:#d4af37;margin:0 0 6px;">Welcome to Twisted Gypsy</h2>
+      <p>Cosmic vibes, soulful living, and magical creations.</p>
     </section>
 
-    <!-- E-Books Highlight -->
-    <section class="ebooks">
-      <h2 style="text-align:center;color:var(--gold);margin:0 0 10px;">📚 Twisted Gypsy E-Books</h2>
-      <p style="text-align:center;margin:0 0 16px;">Instant download after purchase.</p>
-
-      <div class="ebook-card">
-        <img src="ebook-cover.jpg" alt="Twisted Gypsy Sample E-Book Cover">
-        <h3 style="color:var(--gold);margin:8px 0 6px;">Twisted Gypsy Sample E-Book</h3>
-        <p>This is a sample e-book so you can see how checkout and downloads will work for your real products.</p>
-        <span class="price">$14.99</span><br>
-        <a href="https://payhip.com/b/bXA53" target="_blank" rel="noopener" class="buy-button">Buy with PayPal or Card</a>
+    <!-- Featured E-Book (replaces the old sample) -->
+    <section class="feature-card">
+      <img src="30days-cover.jpg?v=15" alt="Twisted Gypsy's 30 Days of Soulful Living">
+      <h3>30 Days of Soulful Living</h3>
+      <p>Transform your daily life with 30 days of intentional rituals, mindful practices, and uplifting affirmations.</p>
+      <div class="price">$5.00</div>
+      <a class="buy" href="https://payhip.com/b/w1LWZ" target="_blank" rel="noopener">Buy Now</a>
+      <div style="margin-top:10px;">
+        <a href="ebooks.html?v=15" style="color:#d4af37;text-decoration:none;font-weight:700;">See all e-books →</a>
       </div>
     </section>
   </main>
 
   <footer>
-    &copy; <script>document.write(new Date().getFullYear())</script> Twisted Gypsy
+    © <script>document.write(new Date().getFullYear())</script> Twisted Gypsy
   </footer>
 
-  <!-- Inline starfield script (no caching issues) -->
-  <script>
-  (function () {
-    const c = document.getElementById('tg-stars');
-    if (!c) return;
-    const ctx = c.getContext('2d');
-    let w, h, dpr, stars = [];
-    const GOLD_N = 140, WHITE_N = 100;
-
-    function resize() {
-      dpr = window.devicePixelRatio || 1;
-      w = c.width = innerWidth * dpr;
-      h = c.height = innerHeight * dpr;
-      c.style.width = innerWidth + 'px';
-      c.style.height = innerHeight + 'px';
-    }
-
-    function make(color) {
-      const isGold = color === 'gold';
-      const r = (Math.random() * (isGold ? 2.6 : 1.9) + (isGold ? 1.0 : 0.7)) * dpr;
-      return {
-        x: Math.random()*w, y: Math.random()*h, r,
-        a: Math.random()*(isGold?0.7:0.6) + (isGold?0.6:0.5),
-        t: Math.random()*Math.PI*2,
-        v: Math.random()*(isGold?0.003:0.0012) + (isGold?0.0015:0.001),
-        dx:(Math.random()-0.5)*(isGold?0.22:0.18),
-        dy:(Math.random()-0.5)*(isGold?0.16:0.12),
-        flick: Math.random()*0.35 + 0.65,
-        color
-      };
-    }
-
-    function init() {
-      stars = [];
-      for (let i=0;i<GOLD_N;i++) stars.push(make('gold'));
-      for (let i=0;i<WHITE_N;i++) stars.push(make('white'));
-    }
-
-    function draw(s, p) {
-      const r = s.r * (0.55 + 0.45 * p * s.flick);
-      const a = s.a * (0.45 + 0.55 * p);
-      const col = s.color==='gold' ? '212,175,55' : '255,255,255';
-      const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, r);
-      g.addColorStop(0, `rgba(${col},${a})`);
-      g.addColorStop(1, `rgba(${col},0)`);
-      ctx.fillStyle = g;
-      ctx.beginPath(); ctx.arc(s.x, s.y, r, 0, Math.PI*2); ctx.fill();
-    }
-
-    function tick() {
-      ctx.clearRect(0,0,w,h);
-      for (const s of stars) {
-        s.t += s.v;
-        const p = (Math.sin(s.t)+1)/2;
-        draw(s, p);
-        s.x += s.dx; s.y += s.dy;
-        if (s.x < -12) s.x = w+12; if (s.x > w+12) s.x = -12;
-        if (s.y < -12) s.y = h+12; if (s.y > h+12) s.y = -12;
-      }
-      requestAnimationFrame(tick);
-    }
-
-    addEventListener('resize', () => { resize(); init(); });
-    resize(); init(); tick();
-  })();
-  </script>
+  <!-- Shared stars script -->
+  <script src="stars.js?v=1"></script>
 </body>
 </html>         
