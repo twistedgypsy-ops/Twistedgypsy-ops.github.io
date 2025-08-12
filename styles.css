@@ -159,3 +159,11 @@ header, nav, main, section, footer { position: relative; z-index: 1; }
 /* Twisted Gypsy – sitewide stars */
 #tg-stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 header, nav, main, section, footer { position: relative; z-index: 1; }
+/* Mobile-friendly tagline size */
+@media (max-width: 420px){
+  .tagline-hero h2{ font-size: 1.35rem; }
+  .tagline-hero p { font-size: .95rem; }
+}
+@media (min-width: 421px) and (max-width: 640px){
+  .tagline-hero h2{ font-size: 1.6rem; }
+}
