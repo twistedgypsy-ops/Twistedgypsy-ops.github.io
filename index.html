@@ -1,101 +1,77 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Twisted Gypsy</title>
-  <link rel="stylesheet" href="styles.css?v=5" />
   <style>
-    /* --- Top spacing & glow polish --- */
-    .site-header{
-      position:relative;
-      padding:12px 0 8px; /* tighter */
-      text-align:center;
-    }
-    .site-header::before{
-      /* subtle moon glow behind the logo/title */
-      content:"";
-      position:absolute; inset:auto 0 0 0; top:-30px;
-      height:180px;
-      background:
-        radial-gradient(220px 120px at 50% 65%,
-          rgba(212,175,55,.28) 0%,
-          rgba(212,175,55,.12) 35%,
-          rgba(212,175,55,0) 70%);
-      filter: blur(10px);
-      pointer-events:none; z-index:0;
-    }
-    header h1{ margin:6px 0 4px; line-height:1; position:relative; z-index:1; }
-    nav{ position:relative; z-index:1; margin-top:6px; }
+    :root{--gold:#d4af37;--fg:#f5f5f5}
+    /* Make stars visible behind everything */
+    html,body{margin:0;height:100%;background:transparent;color:var(--fg);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    #tg-stars{position:fixed;inset:0;z-index:0;pointer-events:none;display:block}
+    header, nav, main, section, footer { position:relative; z-index:1; }
 
-    /* Tagline sits closer to header */
-    .tagline-hero{
-      display:grid; place-items:center;
-      min-height:90px; padding:4px 16px; margin:0 auto 8px;
-      text-align:center; position:relative; z-index:1;
-    }
-    .tagline-hero h2{
-      margin:0; font-weight:800; color:#f9e27a;
-      text-shadow:0 0 10px rgba(212,175,55,.7),0 0 22px rgba(212,175,55,.25);
-      letter-spacing:.5px; line-height:1.2;
-      opacity:0; transform:translateY(6px);
-      animation: tg-fade .9s ease-out .05s forwards;
-    }
-    .tagline-hero p{
-      margin:6px 0 0; color:#e6d28a; opacity:0;
-      animation: tg-fade .9s ease-out .25s forwards;
-    }
-    @keyframes tg-fade{ to{opacity:1; transform:translateY(0)} }
+    /* Ultra-compact header */
+    .site-header{padding:6px 0 2px;text-align:center}
+    .site-header h1{margin:4px 0 2px;line-height:1;font-size:28px}
+    nav{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin:4px 0 6px}
+    nav a{color:var(--gold);text-decoration:none;font-weight:700}
+    nav a:hover{color:#fff176;text-shadow:0 0 8px rgba(212,175,55,.8)}
 
-    /* Compact e-book teaser (unchanged) */
-    .hero{padding:22px 16px;text-align:center;max-width:900px;margin:10px auto}
+    /* Compact tagline hero right under header */
+    .tagline-hero{display:grid;place-items:center;min-height:64px;margin:0 auto 6px;padding:2px 12px;text-align:center}
+    .tagline-hero h2{margin:0;color:#f9e27a;font-weight:800;letter-spacing:.3px;
+      text-shadow:0 0 10px rgba(212,175,55,.6),0 0 22px rgba(212,175,55,.25);
+      opacity:0;transform:translateY(6px);animation:fadeUp .7s ease-out .05s forwards}
+    .tagline-hero p{margin:4px 0 0;color:#e6d28a;opacity:0;animation:fadeUp .7s ease-out .2s forwards}
+    @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+    /* Small intro */
+    .hero{padding:10px 12px;text-align:center;max-width:900px;margin:6px auto}
+
+    /* Compact e-book teaser */
     .mini-ebook{
-      background:rgba(0,0,0,.82);
-      border:1px solid rgba(212,175,55,.55);
-      border-radius:14px;
-      max-width:720px;
-      margin:12px auto 28px;
-      padding:14px;
-      box-shadow:0 0 16px rgba(212,175,55,.25);
-      display:flex; gap:14px; align-items:center; position:relative; z-index:1;
+      background:rgba(0,0,0,.82);border:1px solid rgba(212,175,55,.55);
+      border-radius:14px;max-width:720px;margin:10px auto 24px;padding:12px;
+      box-shadow:0 0 16px rgba(212,175,55,.25);display:flex;gap:12px;align-items:center
     }
-    .mini-ebook img{
-      width:140px; height:auto; flex:0 0 140px;
-      border-radius:10px; border:2px solid #d4af37;
-    }
+    .mini-ebook img{width:120px;height:auto;border-radius:10px;border:2px solid var(--gold)}
     .mini-ebook .info{flex:1 1 auto}
-    .mini-ebook h3{color:#d4af37;margin:0 0 6px;font-size:1.1rem}
-    .mini-ebook p{margin:0 0 8px; line-height:1.45}
-    .mini-ebook .price{color:#d4af37;font-weight:800;margin-right:10px}
-    .actions{display:flex; flex-wrap:wrap; gap:8px}
-    .btn{display:inline-block;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:800}
-    .btn-buy{background:#d4af37;color:#000;box-shadow:0 0 12px rgba(212,175,55,.5)}
-    .btn-outline{border:1px solid #d4af37;color:#d4af37}
+    .mini-ebook h3{color:var(--gold);margin:0 0 6px;font-size:1.05rem}
+    .mini-ebook p{margin:0 0 8px;line-height:1.45}
+    .price{color:var(--gold);font-weight:800;margin-right:10px}
+    .actions{display:flex;flex-wrap:wrap;gap:8px}
+    .btn{display:inline-block;padding:9px 14px;border-radius:999px;text-decoration:none;font-weight:800}
+    .btn-buy{background:var(--gold);color:#000;box-shadow:0 0 12px rgba(212,175,55,.5)}
+    .btn-outline{border:1px solid var(--gold);color:var(--gold)}
     @media (max-width:560px){
-      .mini-ebook{flex-direction:column; text-align:center}
-      .mini-ebook img{width:160px}
+      .mini-ebook{flex-direction:column;text-align:center}
+      .mini-ebook img{width:150px}
       .actions{justify-content:center}
     }
+
+    footer{padding:12px 0;text-align:center;color:var(--gold)}
   </style>
 </head>
 <body>
-  <!-- Stars -->
+  <!-- Stars canvas -->
   <canvas id="tg-stars" aria-hidden="true"></canvas>
 
   <header class="site-header">
     <h1>🌙 Twisted Gypsy 🌙</h1>
     <nav>
-      <a href="index.html?v=18" aria-current="page">Home</a>
-      <a href="about.html?v=18">About</a>
-      <a href="ebooks.html?v=18">E-Books</a>
+      <a href="index.html?v=19" aria-current="page">Home</a>
+      <a href="about.html?v=19">About</a>
+      <a href="ebooks.html?v=19">E-Books</a>
       <a href="https://twistedgypsy.dashery.com/" target="_blank" rel="noopener">Shop</a>
-      <a href="blog.html?v=18">Blog</a>
-      <a href="events.html?v=18">Events</a>
-      <a href="contact.html?v=18">Contact</a>
+      <a href="blog.html?v=19">Blog</a>
+      <a href="events.html?v=19">Events</a>
+      <a href="contact.html?v=19">Contact</a>
     </nav>
   </header>
 
-  <!-- Tagline right under header, with fade-in -->
+  <!-- Tight tagline hero -->
   <section class="tagline-hero">
     <div>
       <h2>Where cosmic dreams meet soulful living</h2>
@@ -105,20 +81,20 @@
 
   <main>
     <section class="hero">
-      <h2 style="color:#d4af37;margin:0 0 6px;">Welcome to Twisted Gypsy</h2>
+      <h2 style="color:#d4af37;margin:0 0 4px;">Welcome to Twisted Gypsy</h2>
       <p>Cosmic vibes, soulful living, and magical creations.</p>
     </section>
 
     <!-- Compact E-Book teaser -->
     <section class="mini-ebook">
-      <img src="30days-cover.jpg?v=18" alt="30 Days of Soulful Living cover">
+      <img src="30days-cover.jpg?v=19" alt="30 Days of Soulful Living cover">
       <div class="info">
         <h3>30 Days of Soulful Living</h3>
         <p>Daily rituals, mindful practices, and affirmations to bring more magic and intention to your life.</p>
         <div class="actions">
           <span class="price">$5.00</span>
           <a class="btn btn-buy" href="https://payhip.com/b/w1LWZ" target="_blank" rel="noopener">Buy Now</a>
-          <a class="btn btn-outline" href="ebooks.html?v=18">View All E-Books</a>
+          <a class="btn btn-outline" href="ebooks.html?v=19">View All E-Books</a>
         </div>
       </div>
     </section>
@@ -128,7 +104,36 @@
     © <script>document.write(new Date().getFullYear())</script> Twisted Gypsy
   </footer>
 
-  <!-- Stars script -->
-  <script src="stars.js?v=1"></script>
+  <!-- Inline starfield (guaranteed to load) -->
+  <script>
+  (function () {
+    const c = document.getElementById('tg-stars'); if (!c) return;
+    const ctx = c.getContext('2d'); let w,h,dpr,stars=[];
+    const GOLD=140, WHITE=100;
+    function resize(){ dpr=window.devicePixelRatio||1;
+      w=c.width=innerWidth*dpr; h=c.height=innerHeight*dpr;
+      c.style.width=innerWidth+'px'; c.style.height=innerHeight+'px'; }
+    function make(col){ const g=col==='gold', r=(Math.random()*(g?2.6:1.9)+(g?1.0:0.7))*dpr;
+      return {x:Math.random()*w,y:Math.random()*h,r,
+        a:Math.random()*(g?0.7:0.6)+(g?0.6:0.5),
+        t:Math.random()*6.283, v:Math.random()*(g?0.003:0.0012)+(g?0.0015:0.001),
+        dx:(Math.random()-0.5)*(g?0.22:0.18), dy:(Math.random()-0.5)*(g?0.16:0.12),
+        f:Math.random()*0.35+0.65, col }; }
+    function init(){ stars=[]; for(let i=0;i<GOLD;i++) stars.push(make('gold'));
+      for(let i=0;i<WHITE;i++) stars.push(make('white')); }
+    function draw(s,p){ const r=s.r*(.55+.45*p*s.f), a=s.a*(.45+.55*p),
+      col=s.col==='gold'?'212,175,55':'255,255,255',
+      g=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,r);
+      g.addColorStop(0,`rgba(${col},${a})`); g.addColorStop(1,`rgba(${col},0)`);
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(s.x,s.y,r,0,6.283); ctx.fill(); }
+    function tick(){ ctx.fillStyle='rgba(0,0,0,1)'; ctx.fillRect(0,0,w,h);
+      for(const s of stars){ s.t+=s.v; const p=(Math.sin(s.t)+1)/2; draw(s,p);
+        s.x+=s.dx; s.y+=s.dy; if(s.x<-12)s.x=w+12; if(s.x>w+12)s.x=-12;
+        if(s.y<-12)s.y=h+12; if(s.y>h+12)s.y=-12; }
+      requestAnimationFrame(tick); }
+    addEventListener('resize', ()=>{ resize(); init(); });
+    resize(); init(); tick();
+  })();
+  </script>
 </body>
-</html>
+</html>  
